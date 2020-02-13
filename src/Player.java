@@ -11,7 +11,7 @@ public class Player {
         icon = new ImageView(image);
     }
 
-    protected void move(int val){
+    protected void move(){
 
     }
 

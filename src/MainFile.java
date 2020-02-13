@@ -14,20 +14,6 @@ public class MainFile extends Application {
     public void start(Stage ps){
         Pane mainPane= new Pane();
 
-
-        Button diceRoll= new Button();
-        diceRoll.setText("Roll");
-        diceRoll.setPrefSize(50, 50);
-        diceRoll.setOnAction(e->{
-            diceRoll();
-            if(turnCounter==1){
-                //move();
-            }
-        });
-        mainPane.getChildren().add(diceRoll);
-        diceRoll.setLayoutX(300);
-        diceRoll.setLayoutY(300);
-
         Image player1image = new Image("mr.respass.jpg");
         Player player1 = new Player(player1image);
         ImageView player1ImageView = player1.getImageView();
@@ -47,6 +33,20 @@ public class MainFile extends Application {
         player2ImageView.setX(610);
         player2ImageView.setY(570);
         mainPane.getChildren().add(player2ImageView);
+
+        Button diceRoll= new Button();
+        diceRoll.setText("Roll");
+        diceRoll.setPrefSize(50, 50);
+        diceRoll.setOnAction(e->{
+            diceRoll();
+            if(turnCounter==1){
+                player1.move();
+            }
+        });
+        mainPane.getChildren().add(diceRoll);
+        diceRoll.setLayoutX(300);
+        diceRoll.setLayoutY(300);
+
 
 
         Image board = new Image("monopoly_original.jpg");
