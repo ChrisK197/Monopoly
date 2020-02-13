@@ -31,7 +31,7 @@ public class Player {
                     icon.setY(icon.getY()+65);
                 }
                 else{
-                    System.out.println("Didn't deatect where the space is.");
+                    System.out.println("Didn't detect where the space is.");
                 }
                 space++;
             }
