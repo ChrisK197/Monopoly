@@ -14,7 +14,7 @@ public class MainFile extends Application {
     public void start(Stage ps){
         Pane mainPane= new Pane();
 
-        Image player1image = new Image("mr.respass.jpg");
+        Image player1image = new Image("respass.png");
         Player player1 = new Player(player1image);
         ImageView player1ImageView = player1.getImageView();
         player1ImageView.setImage(player1image);
@@ -24,7 +24,7 @@ public class MainFile extends Application {
         player1ImageView.setY(610);
         mainPane.getChildren().add(player1ImageView);
 
-        Image player2image = new Image("mr.isecke.jpg");
+        Image player2image = new Image("isecke.png");
         Player player2 = new Player(player2image);
         ImageView player2ImageView = player2.getImageView();
         player2ImageView.setImage(player2image);
