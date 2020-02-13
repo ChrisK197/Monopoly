@@ -9,23 +9,40 @@ import javafx.stage.Stage;
 
 public class MainFile extends Application {
     private int spaceCount=0;
+    //player1 is 1, 2 is 2 etc.
+    private int turnCounter=1;
     public void start(Stage ps){
         Pane mainPane= new Pane();
+
+
         Button diceRoll= new Button();
         diceRoll.setText("Roll");
         diceRoll.setPrefSize(50, 50);
         diceRoll.setOnAction(e->{
             diceRoll();
+            move();
         });
         mainPane.getChildren().add(diceRoll);
         diceRoll.setLayoutX(300);
         diceRoll.setLayoutY(300);
+
+        Image player1 = new Image("mr.respass.jpg");
+        ImageView player1ImageView = new ImageView();
+        player1ImageView.setImage(player1);
+        player1ImageView.setFitWidth(40);
+        player1ImageView.setFitHeight(40);
+        player1ImageView.setX(600);
+        player1ImageView.setY(600);
+        mainPane.getChildren().add(player1ImageView);
+
         Image board = new Image("monopoly_original.jpg");
         ImageView boardImageView = new ImageView();
         boardImageView.setImage(board);
         boardImageView.setFitWidth(650);
         boardImageView.setFitHeight(650);
         mainPane.getChildren().add(boardImageView);
+
+        player1ImageView.toFront();
         diceRoll.toFront();
         Scene scene = new Scene(mainPane, 650,650);
         ps.setTitle("Monopoly");
@@ -44,5 +61,8 @@ public class MainFile extends Application {
                 spaceCount++;
             }
         }
+    }
+    private void move(){
+
     }
 }
