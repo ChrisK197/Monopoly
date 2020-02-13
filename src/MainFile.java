@@ -34,6 +34,16 @@ public class MainFile extends Application {
         player2ImageView.setY(570);
         mainPane.getChildren().add(player2ImageView);
 
+        Image player3image = new Image("bca.png");
+        Player player3 = new Player(player3image);
+        ImageView player3ImageView = player3.getImageView();
+        player3ImageView.setImage(player3image);
+        player3ImageView.setFitWidth(40);
+        player3ImageView.setFitHeight(40);
+        player3ImageView.setX(610);
+        player3ImageView.setY(570);
+        mainPane.getChildren().add(player3ImageView);
+
         Button diceRoll= new Button();
         diceRoll.setText("Roll");
         diceRoll.setPrefSize(50, 50);
