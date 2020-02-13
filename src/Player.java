@@ -5,7 +5,7 @@ public class Player {
     private int space = 0;
     private Image ic;
     private ImageView icon;
-    private int money = 0;
+    private int money = 1500;
 
     public Player(Image image){
         icon = new ImageView(image);
