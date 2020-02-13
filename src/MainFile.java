@@ -46,7 +46,7 @@ public class MainFile extends Application {
 
         player1ImageView.toFront();
         diceRoll.toFront();
-        Scene scene = new Scene(mainPane, 650,650);
+        Scene scene = new Scene(mainPane, 850,650);
         ps.setTitle("Monopoly");
         mainPane.requestFocus();
         ps.setScene(scene);
