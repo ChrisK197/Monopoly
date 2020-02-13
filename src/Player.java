@@ -13,7 +13,8 @@ public class Player {
 
     protected void move(int val){
 
-    };
+    }
+
     public int addMoney(int amount){
         money += amount;
         return money;
