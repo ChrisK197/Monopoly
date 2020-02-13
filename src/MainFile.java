@@ -1,3 +1,4 @@
+import com.sun.prism.paint.Color;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ public class MainFile extends Application {
         Pane mainPane= new Pane();
         Button diceRoll= new Button();
         diceRoll.setText("Roll");
+        diceRoll.setPrefSize(50, 50);
         diceRoll.setOnAction(e->{
             diceRoll();
         });
