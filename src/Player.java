@@ -12,12 +12,27 @@ public class Player {
     }
     //total of 40 squares. Go is 0. Last is 39
     protected void move(){
-        int roll = (int)(Math.random()*6)+1;
+        int roll = 1;
         for(int i=1; i<=roll; i++){
-            if(space+i==40){
+            if(space+1==40){
                 space=0;
             }
             else{
+                if(0<=space && space<=9){
+                    icon.setX(icon.getX()-65);
+                }
+                else if(10<=space && space<=19){
+                    icon.setY(icon.getY()-65);
+                }
+                else if(20<=space && space<=29){
+                    icon.setX(icon.getX()+65);
+                }
+                else if(30<=space && space<=39){
+                    icon.setY(icon.getY()+65);
+                }
+                else{
+                    System.out.println("Didn't deatect where the space is.");
+                }
                 space++;
             }
         }

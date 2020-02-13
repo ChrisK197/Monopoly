@@ -41,6 +41,9 @@ public class MainFile extends Application {
             if(turnCounter==1){
                 player1.move();
             }
+            else if(turnCounter==2){
+                player2.move();
+            }
         });
         mainPane.getChildren().add(diceRoll);
         diceRoll.setLayoutX(300);
