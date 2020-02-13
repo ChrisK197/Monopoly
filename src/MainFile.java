@@ -28,14 +28,26 @@ public class MainFile extends Application {
         diceRoll.setLayoutX(300);
         diceRoll.setLayoutY(300);
 
-        Image player1 = new Image("mr.respass.jpg");
-        ImageView player1ImageView = new ImageView();
-        player1ImageView.setImage(player1);
+        Image player1image = new Image("mr.respass.jpg");
+        Player player1 = new Player(player1image);
+        ImageView player1ImageView = player1.getImageView();
+        player1ImageView.setImage(player1image);
         player1ImageView.setFitWidth(40);
         player1ImageView.setFitHeight(40);
-        player1ImageView.setX(600);
-        player1ImageView.setY(600);
+        player1ImageView.setX(610);
+        player1ImageView.setY(610);
         mainPane.getChildren().add(player1ImageView);
+
+        Image player2image = new Image("mr.isecke.jpg");
+        Player player2 = new Player(player2image);
+        ImageView player2ImageView = player2.getImageView();
+        player2ImageView.setImage(player2image);
+        player2ImageView.setFitWidth(40);
+        player2ImageView.setFitHeight(40);
+        player2ImageView.setX(610);
+        player2ImageView.setY(570);
+        mainPane.getChildren().add(player2ImageView);
+
 
         Image board = new Image("monopoly_original.jpg");
         ImageView boardImageView = new ImageView();
@@ -45,6 +57,7 @@ public class MainFile extends Application {
         mainPane.getChildren().add(boardImageView);
 
         player1ImageView.toFront();
+        player2ImageView.toFront();
         diceRoll.toFront();
         Scene scene = new Scene(mainPane, 850,650);
         ps.setTitle("Monopoly");
