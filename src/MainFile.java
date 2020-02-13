@@ -20,7 +20,9 @@ public class MainFile extends Application {
         diceRoll.setPrefSize(50, 50);
         diceRoll.setOnAction(e->{
             diceRoll();
-            move();
+            if(turnCounter==1){
+                //move();
+            }
         });
         mainPane.getChildren().add(diceRoll);
         diceRoll.setLayoutX(300);
@@ -61,8 +63,5 @@ public class MainFile extends Application {
                 spaceCount++;
             }
         }
-    }
-    private void move(){
-
     }
 }
