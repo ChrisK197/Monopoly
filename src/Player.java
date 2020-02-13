@@ -10,9 +10,17 @@ public class Player {
     public Player(Image image){
         icon = new ImageView(image);
     }
-
+    //total of 40 squares. Go is 0. Last is 39
     protected void move(){
-
+        int roll = (int)(Math.random()*6)+1;
+        for(int i=1; i<=roll; i++){
+            if(space+i==40){
+                space=0;
+            }
+            else{
+                space++;
+            }
+        }
     }
 
     public int addMoney(int amount){
