@@ -1,4 +1,3 @@
-import com.sun.prism.paint.Color;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,7 +33,7 @@ public class MainFile extends Application {
         player2ImageView.setY(570);
         mainPane.getChildren().add(player2ImageView);
 
-        Image player3image = new Image("bca.png");
+        Image player3image = new Image("bcayy.png");
         Player player3 = new Player(player3image);
         ImageView player3ImageView = player3.getImageView();
         player3ImageView.setImage(player3image);
@@ -70,6 +69,7 @@ public class MainFile extends Application {
 
         player1ImageView.toFront();
         player2ImageView.toFront();
+        player3ImageView.toFront();
         diceRoll.toFront();
         Scene scene = new Scene(mainPane, 850,650);
         ps.setTitle("Monopoly");
