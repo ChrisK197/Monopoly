@@ -31,19 +31,11 @@ public class Player {
         this.space = space;
     }
 
-    public Image getIc() {
-        return ic;
-    }
-
-    public void setIc(Image ic) {
-        this.ic = ic;
-    }
-
-    public ImageView getIcon() {
+    public ImageView getImageView() {
         return icon;
     }
 
-    public void setIcon(ImageView icon) {
+    public void setImageView(ImageView icon) {
         this.icon = icon;
     }
 
