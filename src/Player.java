@@ -31,6 +31,7 @@ public class Player {
     private boolean allGreenProps = false;
     private boolean allDBlueProps = false;
     private Text moneyText = new Text();
+    private Text propText = new Text();
 
     private String musicFile = "diceRoll.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
@@ -47,6 +48,7 @@ public class Player {
         playerNum = pnum;
         moneyText.setText(String.format("Money: $%d", money));
         moneyText.setScaleX(2); moneyText.setScaleY(2);
+        propText.setText("Properties: None");
     }
     //total of 40 squares. Go is 0. Last is 39
     protected void move(){
@@ -130,6 +132,7 @@ public class Player {
                 property.setPurchased(true);
                 property.setOwner(this);
                 propertiesOwned.add(property);
+
                 stage.close();
                 return;
             });
