@@ -133,7 +133,7 @@ public class MainFile extends Application {
                                 player1.addMoney(-50);
                                 daysInJail1 = 10;
                                 player1.getImageView().setX(40);
-                                player1.getImageView().setY(600);
+                                player1.getImageView().setY(620);
                                 stage.close();
                             });
                             Button rolll = new Button();
@@ -152,6 +152,8 @@ public class MainFile extends Application {
                                 s2.show();
                                 if (randNum == randNum2) {
                                     daysInJail1 = 10;
+                                    player1.getImageView().setX(40);
+                                    player1.getImageView().setY(620);
                                 }
                                 stage.close();
                             });
@@ -170,6 +172,8 @@ public class MainFile extends Application {
                             daysInJail1++;
                             if (daysInJail1 >= 3) {
                                 daysInJail1 = 10;
+                                player1.getImageView().setX(40);
+                                player1.getImageView().setY(620);
                                 player1.setSpace(10);
                             }
                             turnCounter++;
@@ -266,16 +270,16 @@ public class MainFile extends Application {
                                     int space = c[1];
                                     ImageView icon = player1.getImageView();
                                     if(space==5){
-                                        icon.setX(325);
-                                        icon.setY(610);
+                                        icon.setX(340);
+                                        icon.setY(590);
                                     }
                                     else if(space==11){
                                         icon.setY(520);
                                         icon.setX(50);
                                     }
                                     else if (space==24){
-                                        icon.setY(60);
-                                        icon.setX(275);
+                                        icon.setY(40);
+                                        icon.setX(255);
                                     }
                                 }
                             }
@@ -322,6 +326,8 @@ public class MainFile extends Application {
                                 player2.addMoney(-50);
                                 daysInJail2 = 10;
                                 player2.setSpace(10);
+                                player2.getImageView().setX(40);
+                                player2.getImageView().setY(620);
                                 stage.close();
                             });
                             Button rolll = new Button();
@@ -339,6 +345,8 @@ public class MainFile extends Application {
                                 s2.setScene(sss);
                                 s2.show();
                                 if (randNum == randNum2) {
+                                    player2.getImageView().setX(40);
+                                    player2.getImageView().setY(620);
                                     daysInJail2 = 10;
                                 }
                                 player2.setSpace(10);
@@ -358,6 +366,8 @@ public class MainFile extends Application {
                             stage.show();
                             daysInJail2++;
                             if (daysInJail2 >= 3) {
+                                player2.getImageView().setX(40);
+                                player2.getImageView().setY(620);
                                 daysInJail2 = 10;
                                 player2.setSpace(10);
                             }
@@ -463,8 +473,8 @@ public class MainFile extends Application {
                                         icon.setX(50);
                                     }
                                     else if (space==24){
-                                        icon.setY(60);
-                                        icon.setX(275);
+                                        icon.setY(40);
+                                        icon.setX(255);
                                     }
                                 }
                             }
@@ -511,6 +521,8 @@ public class MainFile extends Application {
                                 daysInJail3 = 10;
                                 player3.setSpace(10);
                                 stage.close();
+                                player3.getImageView().setX(40);
+                                player3.getImageView().setY(620);
                             });
                             Button rolll = new Button();
                             rolll.setText("Roll");
@@ -528,6 +540,8 @@ public class MainFile extends Application {
                                 player1.setSpace(10);
                                 s2.show();
                                 if (randNum == randNum2) {
+                                    player3.getImageView().setX(40);
+                                    player3.getImageView().setY(620);
                                     daysInJail3 = 10;
                                 }
                                 stage.close();
@@ -546,6 +560,8 @@ public class MainFile extends Application {
                             stage.show();
                             daysInJail3++;
                             if (daysInJail3 >= 3) {
+                                player3.getImageView().setX(40);
+                                player3.getImageView().setY(620);
                                 daysInJail3 = 10;
                                 player3.setSpace(10);
                             }
@@ -653,8 +669,8 @@ public class MainFile extends Application {
                                         icon.setX(50);
                                     }
                                     else if (space==24){
-                                        icon.setY(60);
-                                        icon.setX(275);
+                                        icon.setY(40);
+                                        icon.setX(255);
                                     }
                                 }
                             }

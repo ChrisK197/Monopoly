@@ -216,7 +216,7 @@ public class Player {
             roll.setOnAction(e->{
                 int num = (int)(Math.random()*12)+1;
                 this.addMoney(num*4*-1);
-                owner.addMoney(property.getTax());
+                owner.addMoney(num*4*-1);
                 stage.setTitle("Gain/Lose money");
                 Text t3 = new Text(10, 50, "Player " + playerNum + " rolled a " + num);
                 Text t = new Text(10, 100, "Player " + playerNum + " lost $" + num*4);
