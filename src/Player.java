@@ -7,6 +7,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Player {
     private int space = 0;
     private Image ic;
@@ -15,6 +17,7 @@ public class Player {
     private int startX;
     private int startY;
     private int playerNum;
+    private ArrayList<Property> propertiesOwned;
     private boolean allPurpleProps = false;
     private boolean allLBlueProps = false;
     private boolean allPinkProps = false;
@@ -103,6 +106,7 @@ public class Player {
                 this.addMoney(property.getPrice()*-1);
                 property.setPurchased(true);
                 property.setOwner(playerNum);
+                propertiesOwned.add(property);
                 stage.close();
                 return;
             });
@@ -121,7 +125,7 @@ public class Player {
             p.getChildren().add(yes);
             p.getChildren().add(no);
             p.getChildren().add(t);
-            Scene ss = new Scene(p, 200, 200);
+            Scene ss = new Scene(p, 250, 200);
             stage.setScene(ss);
             stage.show();
         }
@@ -166,5 +170,13 @@ public class Player {
 
     public void setStartY(int startY) {
         this.startY = startY;
+    }
+
+    public ArrayList<Property> getPropertiesOwned() {
+        return propertiesOwned;
+    }
+
+    public void setPropertiesOwned(ArrayList<Property> propertiesOwned) {
+        this.propertiesOwned = propertiesOwned;
     }
 }
