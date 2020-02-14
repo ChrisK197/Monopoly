@@ -196,7 +196,7 @@ public class MainFile extends Application {
         p3.setX(680);
         p3.setY(650/3 * 2 + 30);
         mainPane.getChildren().add(p3);
-
+//ahhhhhhhhhhhhh
         Text p3Money = new Text();
         p3Money.setText(String.format("Money: $%d",player3.getMoney()));
         p3Money.setScaleX(2);
