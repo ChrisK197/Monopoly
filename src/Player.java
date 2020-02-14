@@ -1,3 +1,4 @@
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -29,6 +30,7 @@ public class Player {
     private boolean allYellowProps = false;
     private boolean allGreenProps = false;
     private boolean allDBlueProps = false;
+    private Text moneyText = new Text();
 
     private String musicFile = "diceRoll.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
@@ -43,6 +45,8 @@ public class Player {
         startX = x;
         startY = y;
         playerNum = pnum;
+        moneyText.setText(String.format("Money: $%d", money));
+        moneyText.setScaleX(2); moneyText.setScaleY(2);
     }
     //total of 40 squares. Go is 0. Last is 39
     protected void move(){
@@ -105,6 +109,7 @@ public class Player {
 
     public int addMoney(int amount){
         money += amount;
+        moneyText.setText(String.format("Money: $%d", money));
         return money;
     }
 
@@ -211,5 +216,13 @@ public class Player {
 
     public void setPropertiesOwned(ArrayList<Property> propertiesOwned) {
         this.propertiesOwned = propertiesOwned;
+    }
+
+    public Text getMoneyText() {
+        return moneyText;
+    }
+
+    public void setMoneyText(Text moneyText) {
+        this.moneyText = moneyText;
     }
 }
