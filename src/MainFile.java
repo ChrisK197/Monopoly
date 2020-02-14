@@ -119,54 +119,59 @@ public class MainFile extends Application {
                 if (turnCounter == 1) {
                     if(daysInJail1<=2){
                         player1.setSpace(10);
-                        Stage stage = new Stage();
-                        stage.setTitle("Bail out?");
-                        Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail1+1) + " turns." );
-                        Pane p = new Pane();
-                        Button bail = new Button();
-                        bail.setText("Bail");
-                        bail.setOnAction(d-> {
-                            player1.addMoney(-50);
-                            daysInJail1=10;
-                            stage.close();
-                        });
-                        Button rolll = new Button();
-                        rolll.setText("Roll");
-                        rolll.setOnAction(f->{
-                            Stage s2 = new Stage();
-                            int randNum = (int)(Math.random()*6)+1;
-                            int randNum2 = (int)(Math.random()*6)+1;
-                            Pane p2 = new Pane();
-                            Text t2 = new Text(50,50, "You rolled a " + randNum + " and a " + randNum2);
-                            p2.getChildren().add(t2);
-                            t2.setX(50);
-                            t2.setY(50);
-                            Scene sss = new Scene(p2, 250, 200);
-                            s2.setScene(sss);
-                            s2.show();
-                            if(randNum==randNum2){
-                                daysInJail1=10;
-                            }
-                            stage.close();
-                        });
-                        bail.setLayoutX(50);
-                        bail.setLayoutY(100);
-                        rolll.setLayoutX(100);
-                        rolll.setLayoutY(100);
-                        t.setX(10);
-                        t.setY(25);
-                        p.getChildren().add(bail);
-                        p.getChildren().add(rolll);
-                        p.getChildren().add(t);
-                        Scene ss = new Scene(p, 250, 200);
-                        stage.setScene(ss);
-                        stage.show();
-                        daysInJail1++;
-                        if(daysInJail1>=3){
-                            daysInJail1=10;
-                            player1.setSpace(10);
+                        if (player1.jailBreakCard > 0) {
+                            player1.jailBreakCard--;
                         }
-                        turnCounter++;
+                        else {
+                            Stage stage = new Stage();
+                            stage.setTitle("Bail out?");
+                            Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail1 + 1) + " turns.");
+                            Pane p = new Pane();
+                            Button bail = new Button();
+                            bail.setText("Bail");
+                            bail.setOnAction(d -> {
+                                player1.addMoney(-50);
+                                daysInJail1 = 10;
+                                stage.close();
+                            });
+                            Button rolll = new Button();
+                            rolll.setText("Roll");
+                            rolll.setOnAction(f -> {
+                                Stage s2 = new Stage();
+                                int randNum = (int) (Math.random() * 6) + 1;
+                                int randNum2 = (int) (Math.random() * 6) + 1;
+                                Pane p2 = new Pane();
+                                Text t2 = new Text(50, 50, "You rolled a " + randNum + " and a " + randNum2);
+                                p2.getChildren().add(t2);
+                                t2.setX(50);
+                                t2.setY(50);
+                                Scene sss = new Scene(p2, 250, 200);
+                                s2.setScene(sss);
+                                s2.show();
+                                if (randNum == randNum2) {
+                                    daysInJail1 = 10;
+                                }
+                                stage.close();
+                            });
+                            bail.setLayoutX(50);
+                            bail.setLayoutY(100);
+                            rolll.setLayoutX(100);
+                            rolll.setLayoutY(100);
+                            t.setX(10);
+                            t.setY(25);
+                            p.getChildren().add(bail);
+                            p.getChildren().add(rolll);
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            daysInJail1++;
+                            if (daysInJail1 >= 3) {
+                                daysInJail1 = 10;
+                                player1.setSpace(10);
+                            }
+                            turnCounter++;
+                        }
                     }
                     else {
                         player1.move();
@@ -187,6 +192,103 @@ public class MainFile extends Application {
                             player1.getImageView().setX(40);
                             player1.getImageView().setY(585);
                         }
+                        else if (player1.getSpace() == 7 || player1.getSpace() == 22 || player1.getSpace() == 36) {
+                            ChanceCard chance = new ChanceCard();
+                            Stage stage = new Stage();
+                            stage.setTitle("New Chance Card");
+                            Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
+                            Pane p = new Pane();
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            int[] c = chance.cardType();
+                            if (c[0] == 0) {
+                                if (c[1] == 0) {
+                                    player1.setSpace(0);
+                                    player1ImageView.setX(player1.getStartX());
+                                    player1ImageView.setY(player1.getStartY());
+                                }
+                                else if (c[1] == -3) {
+                                    int space = player1.getSpace();
+                                    ImageView icon = player1.getImageView();
+                                    space-=3;
+                                    if(space==0){
+                                        //change later to make better
+                                        icon.setX(player1.getStartX());
+                                        icon.setY(player1.getStartY());
+                                    }
+                                    else if(space==1){
+                                        icon.setX(520);
+                                    }
+                                    else if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(12<=space && space<=20){
+                                        icon.setY(icon.getY()-53);
+                                    }
+                                    else if(21==space){
+                                        icon.setX(icon.getX()+55);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                    else if(31== space){
+                                        icon.setY(icon.getY()+47);
+                                    }
+                                    else if(32<=space && space<=40){
+                                        icon.setY(icon.getY()+53);
+                                    }
+                                    else{
+                                        System.out.println("Didn't detect where the space is.");
+                                    }
+                                }
+                                else if (c[1] == -1) {
+                                    player1.getImageView().setX(40);
+                                    player1.getImageView().setY(585);
+                                    daysInJail1 = 0;
+                                    player1.setSpace(10);
+                                }
+                                else {
+                                    player1.setSpace(c[1]);
+                                    int space = c[1];
+                                    ImageView icon = player1.getImageView();
+                                    if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                }
+                            }
+                            else {
+                                if (c[1] == 0) {
+                                    player1.jailBreakCard++;
+                                }
+                                else if (c[1] == -25) {
+                                    player1.addMoney(player1.getPropertiesOwned().size() & -25);
+                                }
+                                else if (c[1] == -50) {
+                                    player1.addMoney(-100);
+                                    player2.addMoney(50);
+                                    player3.addMoney(50);
+                                }
+                                else {
+                                    player1.addMoney(c[1]);
+                                }
+                            }
+                        }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player1.getSpace()) {
                                 player1.action(properties[i]);
@@ -199,56 +301,61 @@ public class MainFile extends Application {
                 }
                 else if (turnCounter == 2) {
                     if(daysInJail2<=2){
-                        Stage stage = new Stage();
-                        stage.setTitle("Bail out?");
-                        Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail2+1) + " turns." );
-                        Pane p = new Pane();
-                        Button bail = new Button();
-                        bail.setText("Bail");
-                        bail.setOnAction(d-> {
-                            player2.addMoney(-50);
-                            daysInJail2=10;
-                            player2.setSpace(10);
-                            stage.close();
-                        });
-                        Button rolll = new Button();
-                        rolll.setText("Roll");
-                        rolll.setOnAction(f->{
-                            Stage s2 = new Stage();
-                            int randNum = (int)(Math.random()*6)+1;
-                            int randNum2 = (int)(Math.random()*6)+1;
-                            Pane p2 = new Pane();
-                            Text t2 = new Text(50,50, "You rolled a " + randNum + " and a " + randNum2);
-                            p2.getChildren().add(t2);
-                            t2.setX(50);
-                            t2.setY(50);
-                            Scene sss = new Scene(p2, 250, 200);
-                            s2.setScene(sss);
-                            s2.show();
-                            if(randNum==randNum2){
-                                daysInJail2=10;
-                            }
-                            player2.setSpace(10);
-                            stage.close();
-                        });
-                        bail.setLayoutX(50);
-                        bail.setLayoutY(100);
-                        rolll.setLayoutX(100);
-                        rolll.setLayoutY(100);
-                        t.setX(10);
-                        t.setY(25);
-                        p.getChildren().add(bail);
-                        p.getChildren().add(rolll);
-                        p.getChildren().add(t);
-                        Scene ss = new Scene(p, 250, 200);
-                        stage.setScene(ss);
-                        stage.show();
-                        daysInJail2++;
-                        if(daysInJail2>=3){
-                            daysInJail2=10;
-                            player2.setSpace(10);
+                        if (player2.jailBreakCard > 0) {
+                            player2.jailBreakCard--;
                         }
-                        turnCounter++;
+                        else {
+                            Stage stage = new Stage();
+                            stage.setTitle("Bail out?");
+                            Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail2 + 1) + " turns.");
+                            Pane p = new Pane();
+                            Button bail = new Button();
+                            bail.setText("Bail");
+                            bail.setOnAction(d -> {
+                                player2.addMoney(-50);
+                                daysInJail2 = 10;
+                                player2.setSpace(10);
+                                stage.close();
+                            });
+                            Button rolll = new Button();
+                            rolll.setText("Roll");
+                            rolll.setOnAction(f -> {
+                                Stage s2 = new Stage();
+                                int randNum = (int) (Math.random() * 6) + 1;
+                                int randNum2 = (int) (Math.random() * 6) + 1;
+                                Pane p2 = new Pane();
+                                Text t2 = new Text(50, 50, "You rolled a " + randNum + " and a " + randNum2);
+                                p2.getChildren().add(t2);
+                                t2.setX(50);
+                                t2.setY(50);
+                                Scene sss = new Scene(p2, 250, 200);
+                                s2.setScene(sss);
+                                s2.show();
+                                if (randNum == randNum2) {
+                                    daysInJail2 = 10;
+                                }
+                                player2.setSpace(10);
+                                stage.close();
+                            });
+                            bail.setLayoutX(50);
+                            bail.setLayoutY(100);
+                            rolll.setLayoutX(100);
+                            rolll.setLayoutY(100);
+                            t.setX(10);
+                            t.setY(25);
+                            p.getChildren().add(bail);
+                            p.getChildren().add(rolll);
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            daysInJail2++;
+                            if (daysInJail2 >= 3) {
+                                daysInJail2 = 10;
+                                player2.setSpace(10);
+                            }
+                            turnCounter++;
+                        }
                     }
                     else {
                         player2.move();
@@ -269,6 +376,103 @@ public class MainFile extends Application {
                             player2.getImageView().setX(40);
                             player2.getImageView().setY(585);
                         }
+                        else if (player2.getSpace() == 7 || player2.getSpace() == 22 || player2.getSpace() == 36) {
+                            ChanceCard chance = new ChanceCard();
+                            Stage stage = new Stage();
+                            stage.setTitle("New Chance Card");
+                            Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
+                            Pane p = new Pane();
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            int[] c = chance.cardType();
+                            if (c[0] == 0) {
+                                if (c[1] == 0) {
+                                    player2.setSpace(0);
+                                    player2ImageView.setX(player2.getStartX());
+                                    player2ImageView.setY(player2.getStartY());
+                                }
+                                else if (c[1] == -3) {
+                                    int space = player2.getSpace();
+                                    ImageView icon = player2.getImageView();
+                                    space-=3;
+                                    if(space==0){
+                                        //change later to make better
+                                        icon.setX(player2.getStartX());
+                                        icon.setY(player2.getStartY());
+                                    }
+                                    else if(space==1){
+                                        icon.setX(520);
+                                    }
+                                    else if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(12<=space && space<=20){
+                                        icon.setY(icon.getY()-53);
+                                    }
+                                    else if(21==space){
+                                        icon.setX(icon.getX()+55);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                    else if(31== space){
+                                        icon.setY(icon.getY()+47);
+                                    }
+                                    else if(32<=space && space<=40){
+                                        icon.setY(icon.getY()+53);
+                                    }
+                                    else{
+                                        System.out.println("Didn't detect where the space is.");
+                                    }
+                                }
+                                else if (c[1] == -1) {
+                                    player2.getImageView().setX(40);
+                                    player2.getImageView().setY(585);
+                                    daysInJail1 = 0;
+                                    player2.setSpace(10);
+                                }
+                                else {
+                                    player2.setSpace(c[1]);
+                                    int space = c[1];
+                                    ImageView icon = player2.getImageView();
+                                    if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                }
+                            }
+                            else {
+                                if (c[1] == 0) {
+                                    player2.jailBreakCard++;
+                                }
+                                else if (c[1] == -25) {
+                                    player2.addMoney(player2.getPropertiesOwned().size() & -25);
+                                }
+                                else if (c[1] == -50) {
+                                    player2.addMoney(-100);
+                                    player1.addMoney(50);
+                                    player3.addMoney(50);
+                                }
+                                else {
+                                    player2.addMoney(c[1]);
+                                }
+                            }
+                        }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player2.getSpace()) {
                                 player2.action(properties[i]);
@@ -280,59 +484,64 @@ public class MainFile extends Application {
                     }
                 } else if (turnCounter == 3) {
                     if (daysInJail3 <= 2) {
-                        Stage stage = new Stage();
-                        stage.setTitle("Bail out?");
-                        Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail3 + 1) + " turns.");
-                        Pane p = new Pane();
-                        Button bail = new Button();
-                        bail.setText("Bail");
-                        bail.setOnAction(d -> {
-                            player3.addMoney(-50);
-                            daysInJail3 = 10;
-                            player3.setSpace(10);
-                            stage.close();
-                        });
-                        Button rolll = new Button();
-                        rolll.setText("Roll");
-                        rolll.setOnAction(f -> {
-                            Stage s2 = new Stage();
-                            int randNum = (int) (Math.random() * 6) + 1;
-                            int randNum2 = (int) (Math.random() * 6) + 1;
-                            Pane p2 = new Pane();
-                            Text t2 = new Text(50, 50, "You rolled a " + randNum + " and a " + randNum2);
-                            p2.getChildren().add(t2);
-                            t2.setX(50);
-                            t2.setY(50);
-                            Scene sss = new Scene(p2, 250, 200);
-                            s2.setScene(sss);
-                            player1.setSpace(10);
-                            s2.show();
-                            if (randNum == randNum2) {
-                                daysInJail3 = 10;
-                            }
-                            stage.close();
-                        });
-                        bail.setLayoutX(50);
-                        bail.setLayoutY(100);
-                        rolll.setLayoutX(100);
-                        rolll.setLayoutY(100);
-                        t.setX(10);
-                        t.setY(25);
-                        p.getChildren().add(bail);
-                        p.getChildren().add(rolll);
-                        p.getChildren().add(t);
-                        Scene ss = new Scene(p, 250, 200);
-                        stage.setScene(ss);
-                        stage.show();
-                        daysInJail3++;
-                        if (daysInJail3 >= 3) {
-                            daysInJail3 = 10;
-                            player3.setSpace(10);
+                        if (player3.jailBreakCard > 0) {
+                            player3.jailBreakCard--;
                         }
-                        if (turnCounter == 3) {
-                            turnCounter = 1;
-                        } else {
-                            turnCounter++;
+                        else {
+                            Stage stage = new Stage();
+                            stage.setTitle("Bail out?");
+                            Text t = new Text(50, 50, "Want to bail out or try to roll doubles?\nYou have been in jail for " + (daysInJail3 + 1) + " turns.");
+                            Pane p = new Pane();
+                            Button bail = new Button();
+                            bail.setText("Bail");
+                            bail.setOnAction(d -> {
+                                player3.addMoney(-50);
+                                daysInJail3 = 10;
+                                player3.setSpace(10);
+                                stage.close();
+                            });
+                            Button rolll = new Button();
+                            rolll.setText("Roll");
+                            rolll.setOnAction(f -> {
+                                Stage s2 = new Stage();
+                                int randNum = (int) (Math.random() * 6) + 1;
+                                int randNum2 = (int) (Math.random() * 6) + 1;
+                                Pane p2 = new Pane();
+                                Text t2 = new Text(50, 50, "You rolled a " + randNum + " and a " + randNum2);
+                                p2.getChildren().add(t2);
+                                t2.setX(50);
+                                t2.setY(50);
+                                Scene sss = new Scene(p2, 250, 200);
+                                s2.setScene(sss);
+                                player1.setSpace(10);
+                                s2.show();
+                                if (randNum == randNum2) {
+                                    daysInJail3 = 10;
+                                }
+                                stage.close();
+                            });
+                            bail.setLayoutX(50);
+                            bail.setLayoutY(100);
+                            rolll.setLayoutX(100);
+                            rolll.setLayoutY(100);
+                            t.setX(10);
+                            t.setY(25);
+                            p.getChildren().add(bail);
+                            p.getChildren().add(rolll);
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            daysInJail3++;
+                            if (daysInJail3 >= 3) {
+                                daysInJail3 = 10;
+                                player3.setSpace(10);
+                            }
+                            if (turnCounter == 3) {
+                                turnCounter = 1;
+                            } else {
+                                turnCounter++;
+                            }
                         }
                     } else {
                         player3.move();
@@ -351,6 +560,103 @@ public class MainFile extends Application {
                             player1.setSpace(10);
                             player3.getImageView().setX(40);
                             player3.getImageView().setY(585);
+                        }
+                        else if (player3.getSpace() == 7 || player3.getSpace() == 22 || player3.getSpace() == 36) {
+                            ChanceCard chance = new ChanceCard();
+                            Stage stage = new Stage();
+                            stage.setTitle("New Chance Card");
+                            Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
+                            Pane p = new Pane();
+                            Scene ss = new Scene(p, 250, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                            int[] c = chance.cardType();
+                            if (c[0] == 0) {
+                                if (c[1] == 0) {
+                                    player3.setSpace(0);
+                                    player3ImageView.setX(player3.getStartX());
+                                    player3ImageView.setY(player3.getStartY());
+                                }
+                                else if (c[1] == -3) {
+                                    int space = player3.getSpace();
+                                    ImageView icon = player3.getImageView();
+                                    space-=3;
+                                    if(space==0){
+                                        //change later to make better
+                                        icon.setX(player3.getStartX());
+                                        icon.setY(player3.getStartY());
+                                    }
+                                    else if(space==1){
+                                        icon.setX(520);
+                                    }
+                                    else if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(12<=space && space<=20){
+                                        icon.setY(icon.getY()-53);
+                                    }
+                                    else if(21==space){
+                                        icon.setX(icon.getX()+55);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                    else if(31== space){
+                                        icon.setY(icon.getY()+47);
+                                    }
+                                    else if(32<=space && space<=40){
+                                        icon.setY(icon.getY()+53);
+                                    }
+                                    else{
+                                        System.out.println("Didn't detect where the space is.");
+                                    }
+                                }
+                                else if (c[1] == -1) {
+                                    player3.getImageView().setX(40);
+                                    player3.getImageView().setY(585);
+                                    daysInJail1 = 0;
+                                    player3.setSpace(10);
+                                }
+                                else {
+                                    player3.setSpace(c[1]);
+                                    int space = c[1];
+                                    ImageView icon = player3.getImageView();
+                                    if(2<=space && space<=10){
+                                        if(space==10){
+                                            icon.setY(625);
+                                        }
+                                        icon.setX(icon.getX()-53);
+                                    }
+                                    else if(space==11){
+                                        icon.setY(520);
+                                    }
+                                    else if(22<=space && space<=30){
+                                        icon.setX(icon.getX()+53);
+                                    }
+                                }
+                            }
+                            else {
+                                if (c[1] == 0) {
+                                    player3.jailBreakCard++;
+                                }
+                                else if (c[1] == -25) {
+                                    player3.addMoney(player3.getPropertiesOwned().size() & -25);
+                                }
+                                else if (c[1] == -50) {
+                                    player3.addMoney(-100);
+                                    player1.addMoney(50);
+                                    player2.addMoney(50);
+                                }
+                                else {
+                                    player3.addMoney(c[1]);
+                                }
+                            }
                         }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player3.getSpace()) {

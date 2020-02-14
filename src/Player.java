@@ -34,6 +34,8 @@ public class Player {
     private Text propText = new Text();
     private boolean dead = false;
 
+    public int jailBreakCard = 0;
+
     private int rollStreak = 0;
     private int jail = 0;
 
@@ -268,6 +270,9 @@ public class Player {
         propertiesOwned.clear();
     }
 
+    public int getPlayerNum() {
+        return playerNum;
+    }
 
     public int getSpace() {
         return space;
