@@ -113,79 +113,102 @@ public class MainFile extends Application {
             if(player2.isDead() && turnCounter == 2){turnCounter++;}
             if(player3.isDead() && turnCounter == 3){turnCounter = 1;}
             if(player1.isDead() && turnCounter == 1){turnCounter++;}
-            //check if win
-            if(turnCounter==1){
-                player1.move();
-                if(player1.getSpace()==4){
-                    int opt1= 200;
-                    int opt2= player1.getMoney()/10;
-                    if(opt1>=opt2){
-                        player1.addMoney(-1*(200));
-                        player1.incomeTax(200);
-                    }
-                    else{
-                        player1.addMoney(-1*(opt2));
-                        player1.incomeTax(opt2);
-                    }
-                }
-                for(int i=0; i<properties.length; i++){
-                    if(properties[i].getSpacenum()==player1.getSpace()){
-                        player1.action(properties[i]);
-                        break;
-                        //if not property do something else
-                    }
-                }
-            }
-            else if(turnCounter==2){
-                player2.move();
-                if(player2.getSpace()==4){
-                    int opt1= 200;
-                    int opt2= player2.getMoney()/10;
-                    if(opt1>=opt2){
-                        player2.addMoney(-1*(200));
-                        player2.incomeTax(200);
-                    }
-                    else{
-                        player2.addMoney(-1*(opt2));
-                        player2.incomeTax(opt2);
-                    }
-                }
-                for(int i=0; i<properties.length; i++){
-                    if(properties[i].getSpacenum()==player2.getSpace()  ){
-                        player2.action(properties[i]);
-                        break;
-                        //if not property do something else
-                    }
-                }
-            }
-            else if(turnCounter==3){
-                player3.move();
-                if(player3.getSpace()==4){
-                    int opt1= 200;
-                    int opt2= player3.getMoney()/10;
-                    if(opt1>=opt2){
-                        player3.addMoney(-1*(200));
-                        player3.incomeTax(200);
-                    }
-                    else{
-                        player3.addMoney(-1*(opt2));
-                        player3.incomeTax(opt2);
-                    }
-                }
-                for(int i=0; i<properties.length; i++){
-                    if(properties[i].getSpacenum()==player3.getSpace()  ){
-                        player3.action(properties[i]);
-                        break;
-                        //if not property do something else
-                    }
-                }
-            }
 
-            if(turnCounter==3){
-                turnCounter=1;
+            if(!((player1.isDead() && player2.isDead()) || (player1.isDead() && player3.isDead()) || (player2.isDead() && player3.isDead()))) {
+                if (turnCounter == 1) {
+                    player1.move();
+                    if (player1.getSpace() == 4) {
+                        int opt1 = 200;
+                        int opt2 = player1.getMoney() / 10;
+                        if (opt1 >= opt2) {
+                            player1.addMoney(-1 * (200));
+                            player1.incomeTax(200);
+                        } else {
+                            player1.addMoney(-1 * (opt2));
+                            player1.incomeTax(opt2);
+                        }
+                    }
+                    for (int i = 0; i < properties.length; i++) {
+                        if (properties[i].getSpacenum() == player1.getSpace()) {
+                            player1.action(properties[i]);
+                            break;
+                            //if not property do something else
+                        }
+                    }
+                } else if (turnCounter == 2) {
+                    player2.move();
+                    if (player2.getSpace() == 4) {
+                        int opt1 = 200;
+                        int opt2 = player2.getMoney() / 10;
+                        if (opt1 >= opt2) {
+                            player2.addMoney(-1 * (200));
+                            player2.incomeTax(200);
+                        } else {
+                            player2.addMoney(-1 * (opt2));
+                            player2.incomeTax(opt2);
+                        }
+                    }
+                    for (int i = 0; i < properties.length; i++) {
+                        if (properties[i].getSpacenum() == player2.getSpace()) {
+                            player2.action(properties[i]);
+                            break;
+                            //if not property do something else
+                        }
+                    }
+                } else if (turnCounter == 3) {
+                    player3.move();
+                    if (player3.getSpace() == 4) {
+                        int opt1 = 200;
+                        int opt2 = player3.getMoney() / 10;
+                        if (opt1 >= opt2) {
+                            player3.addMoney(-1 * (200));
+                            player3.incomeTax(200);
+                        } else {
+                            player3.addMoney(-1 * (opt2));
+                            player3.incomeTax(opt2);
+                        }
+                    }
+                    for (int i = 0; i < properties.length; i++) {
+                        if (properties[i].getSpacenum() == player3.getSpace()) {
+                            player3.action(properties[i]);
+                            break;
+                            //if not property do something else
+                        }
+                    }
+                }
+
+                if (turnCounter == 3) {
+                    turnCounter = 1;
+                } else {
+                    turnCounter++;
+                }
             }
-            else{
-                turnCounter++;
+            if(player1.isDead() && player2.isDead()){
+                Text temp = new Text("Player 3 Wins");
+                temp.setScaleX(4);
+                temp.setScaleY(4);
+                temp.setX(mainPane.getWidth() / 2 - 100);
+                temp.setY(mainPane.getHeight() / 2);
+                mainPane.getChildren().add(temp);
+                diceRoll.setDisable(true);
+            }
+            else if(player1.isDead() && player3.isDead()){
+                Text temp = new Text("Player 2 Wins");
+                temp.setScaleX(4);
+                temp.setScaleY(4);
+                temp.setX(mainPane.getWidth() / 2 - 100);
+                temp.setY(mainPane.getHeight() / 2);
+                mainPane.getChildren().add(temp);
+                diceRoll.setDisable(true);
+            }
+            else if(player2.isDead() && player3.isDead()){
+                Text temp = new Text("Player 1 Wins");
+                temp.setScaleX(4);
+                temp.setScaleY(4);
+                temp.setX(mainPane.getWidth() / 2 - 100);
+                temp.setY(mainPane.getHeight() / 2);
+                mainPane.getChildren().add(temp);
+                diceRoll.setDisable(true);
             }
         });
         mainPane.getChildren().add(diceRoll);
