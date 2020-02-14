@@ -129,6 +129,21 @@ public class Player {
             stage.setScene(ss);
             stage.show();
         }
+        else{
+            Player owner = property.getOwner();
+            Stage stage = new Stage();
+            this.addMoney(property.getTax()*-1);
+            owner.addMoney(property.getTax());
+            stage.setTitle("Gain/Lose money");
+            Text t = new Text(10, 50, "Player " + playerNum + " lost $" + property.getTax());
+            Text t2 = new Text(10, 100, "Player " + owner.playerNum + " gained $" + property.getTax());
+            Pane p = new Pane();
+            p.getChildren().add(t);
+            p.getChildren().add(t2);
+            Scene ss = new Scene(p, 250, 150);
+            stage.setScene(ss);
+            stage.show();
+        }
     }
 
 
