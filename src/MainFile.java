@@ -86,4 +86,33 @@ public class MainFile extends Application {
         ps.setScene(scene);
         ps.show();
     }
+
+    private void creatingProperties(){
+        Property purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1);
+        Property purple2 = new Property(60, 4, "purple", "Baltic Ave", 3);
+        Property railroad1 = new Property(200, 25, "railroad", "Reading railroad", 5);
+        Property railroad2 = new Property(200, 25, "railroad", "Pennsylvania railroad", 15);
+        Property railroad3 = new Property(200, 25, "railroad", "B. and O. railroad", 25);
+        Property railroad4 = new Property(200, 25, "railroad", "Short Line railroad", 35);
+        Property lblue1 = new Property(100, 6, "light blue", "Oriental ave", 6);
+        Property lblue2 = new Property(100, 6, "light blue", "Vermont ave", 8);
+        Property lblue3 = new Property(120, 8, "light blue", "Connecticut ave", 9);
+        Property pink1 = new Property(140, 10, "pink", "St. Charles Place", 11);
+        Property pink2 = new Property(140, 10, "pink", "States ave", 13);
+        Property pink3 = new Property(140, 12, "pink", "Virginia ave", 14);
+        Property orange1 = new Property(180, 14, "orange", "St. James Place", 16);
+        Property orange2 = new Property(180, 14, "orange", "Tennessee ave", 18);
+        Property orange3 = new Property(200, 16, "orange", "New York ave", 19);
+        Property red1 = new Property(220, 18, "red", "Kentucky ave", 21);
+        Property red2 = new Property(220, 18, "red", "Indiana ave", 23);
+        Property red3 = new Property(240, 20, "red", "Illinois ave", 24);
+        Property yellow1 = new Property(260, 22, "yellow", "Atlantic ave", 26);
+        Property yellow2 = new Property(260, 22, "yellow", "Ventnor ave", 27);
+        Property yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29);
+        Property green1 = new Property(300, 26, "green", "Pacific ave", 31);
+        Property green2 = new Property(300, 26, "green", "North Carolina ave", 32);
+        Property green3 = new Property(320, 28, "green", "Pennsylvania ave", 34);
+        Property dblue1 = new Property(350, 35, "dark blue", "Park Place", 37);
+        Property dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39);
+    }
 }
