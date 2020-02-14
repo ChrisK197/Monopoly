@@ -257,6 +257,9 @@ public class MainFile extends Application {
                                     player1.setSpace(10);
                                 }
                                 else {
+                                    if (player1.getSpace() > c[1]) {
+                                        player1.addMoney(200);
+                                    }
                                     player1.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player1.getImageView();
@@ -443,6 +446,9 @@ public class MainFile extends Application {
                                     player2.setSpace(10);
                                 }
                                 else {
+                                    if (player2.getSpace() > c[1]) {
+                                        player2.addMoney(200);
+                                    }
                                     player2.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player2.getImageView();
@@ -630,6 +636,9 @@ public class MainFile extends Application {
                                     player3.setSpace(10);
                                 }
                                 else {
+                                    if (player3.getSpace() > c[1]) {
+                                        player3.addMoney(200);
+                                    }
                                     player3.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player3.getImageView();
