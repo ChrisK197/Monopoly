@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainFile extends Application {
@@ -158,6 +159,27 @@ public class MainFile extends Application {
         player2ImageView.toFront();
         player3ImageView.toFront();
         diceRoll.toFront();
+
+        Text p1 = new Text("Player 1: ");
+        p1.setScaleX(2);
+        p1.setScaleY(2);
+        p1.setX(680);
+        p1.setY(30);
+        mainPane.getChildren().add(p1);
+
+        Text p2 = new Text("Player 2: ");
+        p2.setScaleX(2);
+        p2.setScaleY(2);
+        p2.setX(680);
+        p2.setY(650/3 + 30);
+        mainPane.getChildren().add(p2);
+
+        Text p3 = new Text("Player 3: ");
+        p3.setScaleX(2);
+        p3.setScaleY(2);
+        p3.setX(680);
+        p3.setY(650/3 * 2 + 30);
+        mainPane.getChildren().add(p3);
         Scene scene = new Scene(mainPane, 850,650);
         ps.setTitle("Monopoly");
         mainPane.requestFocus();
