@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+//commet
 public class Property {
     private int price;
     private int tax;
