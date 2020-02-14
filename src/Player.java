@@ -6,9 +6,13 @@ public class Player {
     private Image ic;
     private ImageView icon;
     private int money = 1500;
+    private int startX;
+    private int startY;
 
-    public Player(Image image){
+    public Player(Image image, int x, int y){
         icon = new ImageView(image);
+        startX = x;
+        startY = y;
     }
     //total of 40 squares. Go is 0. Last is 39
     protected void move(){
@@ -87,5 +91,21 @@ public class Player {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public int getStartX() {
+        return startX;
+    }
+
+    public void setStartX(int startX) {
+        this.startX = startX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
+
+    public void setStartY(int startY) {
+        this.startY = startY;
     }
 }
