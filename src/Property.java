@@ -1,3 +1,6 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.util.HashMap;
 //commet
 public class Property {
@@ -8,6 +11,7 @@ public class Property {
     private String name;
     private int spacenum;
     private Player owner;
+    private ImageView card;
     public static HashMap<String, Integer> propToNumOfColor = new HashMap<>();
     static {
         propToNumOfColor.put("purple", 2);
@@ -23,12 +27,19 @@ public class Property {
 
     }
 
-    public Property(int price, int tax, String color, String name, int space){
+    public Property(int price, int tax, String color, String name, int space, Image im){
         this.price = price;
         this.tax = tax;
         this.color = color;
         this.name = name;
         spacenum = space;
+        card = new ImageView(im);
+       card.setScaleX(.5);
+       card.setScaleY(.5);
+    }
+
+    public ImageView getCard(){
+        return card;
     }
 
     public int getPrice() {

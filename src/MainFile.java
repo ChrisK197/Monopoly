@@ -40,34 +40,34 @@ public class MainFile extends Application {
     public Property electric;
     public Property waterWorks;
     public Property[] properties = {
-            purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1),
-            purple2 = new Property(60, 4, "purple", "Baltic Ave", 3),
-            railroad1 = new Property(200, 25, "railroad", "Reading Railroad", 5),
-            railroad2 = new Property(200, 25, "railroad", "Pennsylvania Railroad", 15),
-            railroad3 = new Property(200, 25, "railroad", "B. and O. Railroad", 25),
-            railroad4 = new Property(200, 25, "railroad", "Short Line Railroad", 35),
-            lblue1 = new Property(100, 6, "light blue", "Oriental Ave", 6),
-            lblue2 = new Property(100, 6, "light blue", "Vermont Ave", 8),
-            lblue3 = new Property(120, 8, "light blue", "Connecticut Ave", 9),
-            pink1 = new Property(140, 10, "pink", "St. Charles Place", 11),
-            pink2 = new Property(140, 10, "pink", "States Ave", 13),
-            pink3 = new Property(140, 12, "pink", "Virginia Ave", 14),
-            orange1 = new Property(180, 14, "orange", "St. James Place", 16),
-            orange2 = new Property(180, 14, "orange", "Tennessee Ave", 18),
-            orange3 = new Property(200, 16, "orange", "New York Ave", 19),
-            red1 = new Property(220, 18, "red", "Kentucky Ave", 21),
-            red2 = new Property(220, 18, "red", "Indiana Ave", 23),
-            red3 = new Property(240, 20, "red", "Illinois Ave", 24),
-            yellow1 = new Property(260, 22, "yellow", "Atlantic Ave", 26),
-            yellow2 = new Property(260, 22, "yellow", "Ventnor Ave", 27),
-            yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29),
-            green1 = new Property(300, 26, "green", "Pacific Ave", 31),
-            green2 = new Property(300, 26, "green", "North Carolina Ave", 32),
-            green3 = new Property(320, 28, "green", "Pennsylvania Ave", 34),
-            dblue1 = new Property(350, 35, "dark blue", "Park Place", 37),
-            dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39),
-            electric = new Property(150, 0, "utility", "Electrical Company", 12),
-            waterWorks= new Property(150, 0, "utility", "Water Works", 28)
+            purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1, new Image("img/medAve.PNG")),
+            purple2 = new Property(60, 4, "purple", "Baltic Ave", 3, new Image("img/baltic.PNG")),
+            railroad1 = new Property(200, 25, "railroad", "Reading Railroad", 5, new Image("img/reading.PNG")),
+            railroad2 = new Property(200, 25, "railroad", "Pennsylvania Railroad", 15, new Image("img/penn.PNG")),
+            railroad3 = new Property(200, 25, "railroad", "B. and O. Railroad", 25, new Image("img/b&o.PNG")),
+            railroad4 = new Property(200, 25, "railroad", "Short Line Railroad", 35, new Image("img/short.PNG")),
+            lblue1 = new Property(100, 6, "light blue", "Oriental Ave", 6, new Image("img/oriental.PNG")),
+            lblue2 = new Property(100, 6, "light blue", "Vermont Ave", 8, new Image("img/vermont.PNG")),
+            lblue3 = new Property(120, 8, "light blue", "Connecticut Ave", 9, new Image("img/connecticut.PNG")),
+            pink1 = new Property(140, 10, "pink", "St. Charles Place", 11, new Image("img/stCharles.PNG")),
+            pink2 = new Property(140, 10, "pink", "States Ave", 13, new Image("img/states.PNG")),
+            pink3 = new Property(140, 12, "pink", "Virginia Ave", 14, new Image("img/virginia.PNG")),
+            orange1 = new Property(180, 14, "orange", "St. James Place", 16, new Image("img/stJames.PNG")),
+            orange2 = new Property(180, 14, "orange", "Tennessee Ave", 18, new Image("img/tennessee.PNG")),
+            orange3 = new Property(200, 16, "orange", "New York Ave", 19, new Image("img/newyork.PNG")),
+            red1 = new Property(220, 18, "red", "Kentucky Ave", 21, new Image("img/kentucky.PNG")),
+            red2 = new Property(220, 18, "red", "Indiana Ave", 23, new Image("img/indiana.PNG")),
+            red3 = new Property(240, 20, "red", "Illinois Ave", 24, new Image("img/illinois.PNG")),
+            yellow1 = new Property(260, 22, "yellow", "Atlantic Ave", 26, new Image("img/atlantic.PNG")),
+            yellow2 = new Property(260, 22, "yellow", "Ventnor Ave", 27, new Image("img/ventor.PNG")),
+            yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29, new Image("img/marvin.PNG")),
+            green1 = new Property(300, 26, "green", "Pacific Ave", 31, new Image("img/pacific.PNG")),
+            green2 = new Property(300, 26, "green", "North Carolina Ave", 32, new Image("img/ncarolina.PNG")),
+            green3 = new Property(320, 28, "green", "Pennsylvania Ave", 34, new Image("img/pennAve.PNG")),
+            dblue1 = new Property(350, 35, "dark blue", "Park Place", 37, new Image("img/parkplace.PNG")),
+            dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39, new Image("img/boardwalk.PNG")),
+            electric = new Property(150, 0, "utility", "Electrical Company", 12, new Image("img/electric.PNG")),
+            waterWorks= new Property(150, 0, "utility", "Water Works", 28, new Image("img/water.PNG"))
     };
 
     private int spaceCount=0;
@@ -765,6 +765,25 @@ public class MainFile extends Application {
         player1.getPropText().setX(670);
         player1.getPropText().setY(90);
         mainPane.getChildren().add(player1.getMoneyText());
+        Stage ss = new Stage();
+        player1.getPropText().setOnMouseEntered(e ->{
+            if(!player1.getPropertiesOwned().isEmpty()) {
+                Pane pp = new Pane();
+                for (int i = 0; i < player1.getPropertiesOwned().size(); i++) {
+                    ImageView temp = player1.getPropertiesOwned().get(i).getCard();
+                    temp.setX(-70 + (i * 150));
+                    temp.setY(0);
+                    pp.getChildren().add(temp);
+                }
+                Scene sss = new Scene(pp, player1.getPropertiesOwned().size() * 150, 300);
+                ss.setScene(sss);
+                ss.setTitle("Properties Player 1");
+                ss.show();
+            }
+        });
+        player1.getPropText().setOnMouseExited(e ->{
+            ss.hide();
+        });
         mainPane.getChildren().add(player1.getPropText());
 
         Text p2 = new Text("Player 2: ");
@@ -779,6 +798,25 @@ public class MainFile extends Application {
         player2.getPropText().setX(670);
         player2.getPropText().setY(650/3 +90);
         mainPane.getChildren().add(player2.getMoneyText());
+        Stage sss = new Stage();
+        player2.getPropText().setOnMouseEntered(e ->{
+            if(!player2.getPropertiesOwned().isEmpty()) {
+                Pane pp = new Pane();
+                for (int i = 0; i < player2.getPropertiesOwned().size(); i++) {
+                    ImageView temp = player2.getPropertiesOwned().get(i).getCard();
+                    temp.setX(-70 + (i * 150));
+                    temp.setY(0);
+                    pp.getChildren().add(temp);
+                }
+                Scene s = new Scene(pp, player2.getPropertiesOwned().size() * 150, 300);
+                sss.setScene(s);
+                sss.setTitle("Properties Player 2");
+                sss.show();
+            }
+        });
+        player2.getPropText().setOnMouseExited(e ->{
+            sss.hide();
+        });
         mainPane.getChildren().add(player2.getPropText());
 
         Text p3 = new Text("Player 3: ");
@@ -793,6 +831,25 @@ public class MainFile extends Application {
         player3.getPropText().setX(670);
         player3.getPropText().setY(650/3*2+90);
         mainPane.getChildren().add(player3.getMoneyText());
+        Stage ssss = new Stage();
+        player3.getPropText().setOnMouseEntered(e ->{
+            if(!player3.getPropertiesOwned().isEmpty()) {
+                Pane pp = new Pane();
+                for (int i = 0; i < player3.getPropertiesOwned().size(); i++) {
+                    ImageView temp = player3.getPropertiesOwned().get(i).getCard();
+                    temp.setX(-70 + (i * 150));
+                    temp.setY(0);
+                    pp.getChildren().add(temp);
+                }
+                Scene s = new Scene(pp, player3.getPropertiesOwned().size() * 150, 300);
+                ssss.setScene(s);
+                ssss.setTitle("Properties Player 3");
+                ssss.show();
+            }
+        });
+        player3.getPropText().setOnMouseExited(e ->{
+            ssss.hide();
+        });
         mainPane.getChildren().add(player3.getPropText());
 
 
