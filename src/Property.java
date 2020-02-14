@@ -7,18 +7,18 @@ public class Property {
     private boolean isPurchased = false;
     private String name;
     private int spacenum;
-    protected static HashMap<String, Integer> propToNum = new HashMap<>();
+    public static HashMap<String, Integer> propToNumOfColor = new HashMap<>();
     static {
-        propToNum.put("purple", 2);
-        propToNum.put("lblue", 3);
-        propToNum.put("pink", 3);
-        propToNum.put("orange", 3);
-        propToNum.put("red", 3);
-        propToNum.put("yellow", 3);
-        propToNum.put("green", 3);
-        propToNum.put("dblue", 2);
-        propToNum.put("railroad", 4);
-        propToNum.put("utility", 2);
+        propToNumOfColor.put("purple", 2);
+        propToNumOfColor.put("lblue", 3);
+        propToNumOfColor.put("pink", 3);
+        propToNumOfColor.put("orange", 3);
+        propToNumOfColor.put("red", 3);
+        propToNumOfColor.put("yellow", 3);
+        propToNumOfColor.put("green", 3);
+        propToNumOfColor.put("dblue", 2);
+        propToNumOfColor.put("railroad", 4);
+        propToNumOfColor.put("utility", 2);
 
     }
 
