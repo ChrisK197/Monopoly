@@ -109,6 +109,11 @@ public class MainFile extends Application {
         diceRoll.setText("Roll");
         diceRoll.setPrefSize(50, 50);
         diceRoll.setOnAction(e->{
+            if(player1.isDead() && turnCounter == 1){turnCounter++;}
+            if(player2.isDead() && turnCounter == 2){turnCounter++;}
+            if(player3.isDead() && turnCounter == 3){turnCounter = 1;}
+            if(player1.isDead() && turnCounter == 1){turnCounter++;}
+            //check if win
             if(turnCounter==1){
                 player1.move();
                 if(player1.getSpace()==4){

@@ -32,6 +32,7 @@ public class Player {
     private boolean allDBlueProps = false;
     private Text moneyText = new Text();
     private Text propText = new Text();
+    private boolean dead = false;
 
     private String musicFile = "diceRoll.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
@@ -119,8 +120,15 @@ public class Player {
 
     public int addMoney(int amount){
         money += amount;
-        moneyText.setText(String.format("Money: $%d", money));
-        return money;
+        if(money <= 0){
+            dead = true;
+            moneyText.setText("Bankrupt!!");
+            return 0;
+        }
+        else {
+            moneyText.setText(String.format("Money: $%d", money));
+            return money;
+        }
     }
 
     public void action(Property property){
@@ -288,5 +296,13 @@ public class Player {
 
     public void setPropText(Text propText) {
         this.propText = propText;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
 }
