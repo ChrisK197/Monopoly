@@ -81,74 +81,12 @@ public class Player {
         stage.setScene(ss);
         stage.show();
 
-        if (!(jail > 1)) {
-            roll += roll2;
-        }
+        roll += roll2;
+
 
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
         for(int i=1; i<=roll; i++){
-            if (jail == 1) {
-                icon.setX(startX-525);
-                icon.setY(startY-35);
-                jail++;
-                space = 10;
-                return;
-            }
-            if (jail > 1 && jail < 5) {
-                if (roll == roll2) {
-                    jail = 0;
-                    roll += roll2;
-                    icon.setX(96);
-                    icon.setY(startY);
-                }
-                else {
-                    Stage stageask = new Stage();
-                    stageask.setTitle("Want to bail?");
-                    Text text = new Text(150, 250, "Want to bail out of jail for $50?" );
-                    Pane pane = new Pane();
-                    Button yes = new Button();
-                    yes.setText("Yes!");
-                    yes.setOnAction(e->{
-                        addMoney(-50);
-                        jail = 0;
-                        icon.setX(85);
-                        icon.setY(575);
-                        space = 10;
-                        stage.close();
-                        return;
-                    });
-                    Button no = new Button();
-                    no.setText("NO");
-                    no.setOnAction(e->{
-                        stage.close();
-                        jail++;
-                        return;
-                    });
-                    yes.setLayoutX(50);
-                    yes.setLayoutY(100);
-                    no.setLayoutX(100);
-                    no.setLayoutY(100);
-                    text.setX(10);
-                    text.setY(25);
-                    pane.getChildren().add(yes);
-                    pane.getChildren().add(no);
-                    pane.getChildren().add(text);
-                    Scene sse = new Scene(pane, 250, 200);
-                    stage.setScene(sse);
-                    stage.show();
-                }
-            }
-            if (jail >= 5) {
-                Stage stageask = new Stage();
-                stageask.setTitle("Automatic bail");
-                Text text = new Text(150, 250, "You are being automatically bailed out of jail. You will lose $50");
-                Pane pane = new Pane();
-                pane.getChildren().add(text);
-                Scene sse = new Scene(pane, 250, 200);
-                stage.setScene(sse);
-                stage.show();
-            }
             if(space+1==40){
                 space=0;
                 addMoney(200);
@@ -173,6 +111,9 @@ public class Player {
                 icon.setX(520);
             }
             else if(2<=space && space<=10){
+                if(space==10){
+                    icon.setY(625);
+                }
                 icon.setX(icon.getX()-53);
             }
             else if(space==11){
@@ -185,13 +126,6 @@ public class Player {
                 icon.setX(icon.getX()+55);
             }
             else if(22<=space && space<=30){
-                if (space == 30) {
-                    icon.setX(startX-525);
-                    icon.setY(startY-35);
-                    jail = 2;
-                    space = 10;
-                    return;
-                }
                 icon.setX(icon.getX()+53);
             }
             else if(31== space){
@@ -232,7 +166,7 @@ public class Player {
             Button yes = new Button();
             yes.setText("Yes!");
             yes.setOnAction(e->{
-                this.addMoney(property.getPrice()*-1);
+                this.addMoney(property. getPrice()*-1);
 
                 mediaPlayer2.setVolume(100);
                 mediaPlayer2.play();
