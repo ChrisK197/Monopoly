@@ -34,6 +34,9 @@ public class Player {
     private Text propText = new Text();
     private boolean dead = false;
 
+    private int rollStreak = 0;
+    private int jail = 0;
+
     private String musicFile = "diceRoll.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -59,28 +62,102 @@ public class Player {
     protected void move(){
         //change to math.random() later.
         int roll = (int)(Math.random()*6)+1;
+        int roll2 = (int)(Math.random()*6)+1;
+        if (roll == roll2) {
+            if (++rollStreak >= 3) {
+                jail = 1;
+            }
+        }
+        else {
+            rollStreak = 0;
+        }
         Stage stage = new Stage();
         stage.setTitle("Roll");
         Pane p = new Pane();
-        Text t = new Text(150, 250, "Player " + playerNum + " rolled a " + roll);
+        Text t = new Text(150, 250, "Player " + playerNum + " rolled a " + roll + " and a " + roll2);
         t.setFont(new Font(26));
         p.getChildren().add(t);
         Scene ss = new Scene(p, 500, 500);
         stage.setScene(ss);
         stage.show();
 
+        if (!(jail > 1)) {
+            roll += roll2;
+        }
+
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
         for(int i=1; i<=roll; i++){
+            if (jail == 1) {
+                icon.setX(startX-525);
+                icon.setY(startY-35);
+                jail++;
+                space = 10;
+                return;
+            }
+            if (jail > 1 && jail < 5) {
+                if (roll == roll2) {
+                    jail = 0;
+                    roll += roll2;
+                    icon.setX(96);
+                    icon.setY(startY);
+                }
+                else {
+                    Stage stageask = new Stage();
+                    stageask.setTitle("Want to bail?");
+                    Text text = new Text(150, 250, "Want to bail out of jail for $50?" );
+                    Pane pane = new Pane();
+                    Button yes = new Button();
+                    yes.setText("Yes!");
+                    yes.setOnAction(e->{
+                        addMoney(-50);
+                        jail = 0;
+                        icon.setX(85);
+                        icon.setY(575);
+                        space = 10;
+                        stage.close();
+                        return;
+                    });
+                    Button no = new Button();
+                    no.setText("NO");
+                    no.setOnAction(e->{
+                        stage.close();
+                        jail++;
+                        return;
+                    });
+                    yes.setLayoutX(50);
+                    yes.setLayoutY(100);
+                    no.setLayoutX(100);
+                    no.setLayoutY(100);
+                    text.setX(10);
+                    text.setY(25);
+                    pane.getChildren().add(yes);
+                    pane.getChildren().add(no);
+                    pane.getChildren().add(text);
+                    Scene sse = new Scene(pane, 250, 200);
+                    stage.setScene(sse);
+                    stage.show();
+                }
+            }
+            if (jail >= 5) {
+                Stage stageask = new Stage();
+                stageask.setTitle("Automatic bail");
+                Text text = new Text(150, 250, "You are being automatically bailed out of jail. You will lose $50");
+                Pane pane = new Pane();
+                pane.getChildren().add(text);
+                Scene sse = new Scene(pane, 250, 200);
+                stage.setScene(sse);
+                stage.show();
+            }
             if(space+1==40){
                 space=0;
                 addMoney(200);
                 Stage stage2 = new Stage();
-                stage.setTitle("Go");
+                stage2.setTitle("Go");
                 Text t2 = new Text(10, 50, "Player " + playerNum + " gained $200 from passing go");
-                Pane p2 = new Pane();
-                p2.getChildren().add(t);
-                Scene ss2 = new Scene(p, 250, 150);
+                Pane pane2 = new Pane();
+                pane2.getChildren().add(t2);
+                Scene ss2 = new Scene(pane2, 250, 150);
                 stage2.setScene(ss2);
                 stage2.show();
             }
@@ -108,6 +185,13 @@ public class Player {
                 icon.setX(icon.getX()+55);
             }
             else if(22<=space && space<=30){
+                if (space == 30) {
+                    icon.setX(startX-525);
+                    icon.setY(startY-35);
+                    jail = 2;
+                    space = 10;
+                    return;
+                }
                 icon.setX(icon.getX()+53);
             }
             else if(31== space){
