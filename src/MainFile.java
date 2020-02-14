@@ -208,6 +208,7 @@ public class MainFile extends Application {
                                     player1.setSpace(0);
                                     player1ImageView.setX(player1.getStartX());
                                     player1ImageView.setY(player1.getStartY());
+                                    player1.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
                                     int space = player1.getSpace();
@@ -393,6 +394,7 @@ public class MainFile extends Application {
                                     player2.setSpace(0);
                                     player2ImageView.setX(player2.getStartX());
                                     player2ImageView.setY(player2.getStartY());
+                                    player2.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
                                     int space = player2.getSpace();
@@ -579,6 +581,7 @@ public class MainFile extends Application {
                                     player3.setSpace(0);
                                     player3ImageView.setX(player3.getStartX());
                                     player3ImageView.setY(player3.getStartY());
+                                    player3.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
                                     int space = player3.getSpace();
