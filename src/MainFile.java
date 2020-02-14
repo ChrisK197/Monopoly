@@ -132,6 +132,8 @@ public class MainFile extends Application {
                             bail.setOnAction(d -> {
                                 player1.addMoney(-50);
                                 daysInJail1 = 10;
+                                player1.getImageView().setX(40);
+                                player1.getImageView().setY(600);
                                 stage.close();
                             });
                             Button rolll = new Button();
@@ -263,17 +265,17 @@ public class MainFile extends Application {
                                     player1.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player1.getImageView();
-                                    if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
+                                    if(space==5){
+                                        icon.setX(325);
+                                        icon.setY(610);
                                     }
                                     else if(space==11){
                                         icon.setY(520);
+                                        icon.setX(50);
                                     }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
+                                    else if (space==24){
+                                        icon.setY(60);
+                                        icon.setX(275);
                                     }
                                 }
                             }
