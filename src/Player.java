@@ -34,6 +34,9 @@ public class Player {
     private Text propText = new Text();
     private boolean dead = false;
 
+    private int rollStreak = 0;
+    private int jail = 0;
+
     private String musicFile = "diceRoll.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -59,15 +62,27 @@ public class Player {
     protected void move(){
         //change to math.random() later.
         int roll = (int)(Math.random()*6)+1;
+        int roll2 = (int)(Math.random()*6)+1;
+        if (roll == roll2) {
+            if (++rollStreak >= 3) {
+                jail = 1;
+            }
+        }
+        else {
+            rollStreak = 0;
+        }
         Stage stage = new Stage();
         stage.setTitle("Roll");
         Pane p = new Pane();
-        Text t = new Text(150, 250, "Player " + playerNum + " rolled a " + roll);
+        Text t = new Text(150, 250, "Player " + playerNum + " rolled a " + roll + " and a " + roll2);
         t.setFont(new Font(26));
         p.getChildren().add(t);
         Scene ss = new Scene(p, 500, 500);
         stage.setScene(ss);
         stage.show();
+
+        roll += roll2;
+
 
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
@@ -76,11 +91,11 @@ public class Player {
                 space=0;
                 addMoney(200);
                 Stage stage2 = new Stage();
-                stage.setTitle("Go");
+                stage2.setTitle("Go");
                 Text t2 = new Text(10, 50, "Player " + playerNum + " gained $200 from passing go");
-                Pane p2 = new Pane();
-                p2.getChildren().add(t);
-                Scene ss2 = new Scene(p, 250, 150);
+                Pane pane2 = new Pane();
+                pane2.getChildren().add(t2);
+                Scene ss2 = new Scene(pane2, 250, 150);
                 stage2.setScene(ss2);
                 stage2.show();
             }
@@ -96,6 +111,9 @@ public class Player {
                 icon.setX(520);
             }
             else if(2<=space && space<=10){
+                if(space==10){
+                    icon.setY(625);
+                }
                 icon.setX(icon.getX()-53);
             }
             else if(space==11){
@@ -148,7 +166,7 @@ public class Player {
             Button yes = new Button();
             yes.setText("Yes!");
             yes.setOnAction(e->{
-                this.addMoney(property.getPrice()*-1);
+                this.addMoney(property. getPrice()*-1);
 
                 mediaPlayer2.setVolume(100);
                 mediaPlayer2.play();
