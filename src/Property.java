@@ -23,7 +23,6 @@ public class Property {
 
     }
 
-
     public Property(int price, int tax, String color, String name, int space){
         this.price = price;
         this.tax = tax;
