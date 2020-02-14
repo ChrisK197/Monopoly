@@ -28,8 +28,8 @@ public class Player {
             }
             if(space==0){
                 //change later to make better
-                icon.setX(610);
-                icon.setY(610);
+                icon.setX(startX);
+                icon.setY(startY);
             }
             else if(space==1){
                 icon.setX(520);
