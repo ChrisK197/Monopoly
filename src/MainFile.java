@@ -35,33 +35,37 @@ public class MainFile extends Application {
     public Property green3;
     public Property dblue1;
     public Property dblue2;
+    public Property electric;
+    public Property waterWorks;
     public Property[] properties = {
             purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1),
             purple2 = new Property(60, 4, "purple", "Baltic Ave", 3),
-            railroad1 = new Property(200, 25, "railroad", "Reading railroad", 5),
-            railroad2 = new Property(200, 25, "railroad", "Pennsylvania railroad", 15),
-            railroad3 = new Property(200, 25, "railroad", "B. and O. railroad", 25),
-            railroad4 = new Property(200, 25, "railroad", "Short Line railroad", 35),
-            lblue1 = new Property(100, 6, "light blue", "Oriental ave", 6),
-            lblue2 = new Property(100, 6, "light blue", "Vermont ave", 8),
-            lblue3 = new Property(120, 8, "light blue", "Connecticut ave", 9),
+            railroad1 = new Property(200, 25, "railroad", "Reading Railroad", 5),
+            railroad2 = new Property(200, 25, "railroad", "Pennsylvania Railroad", 15),
+            railroad3 = new Property(200, 25, "railroad", "B. and O. Railroad", 25),
+            railroad4 = new Property(200, 25, "railroad", "Short Line Railroad", 35),
+            lblue1 = new Property(100, 6, "light blue", "Oriental Ave", 6),
+            lblue2 = new Property(100, 6, "light blue", "Vermont Ave", 8),
+            lblue3 = new Property(120, 8, "light blue", "Connecticut Ave", 9),
             pink1 = new Property(140, 10, "pink", "St. Charles Place", 11),
-            pink2 = new Property(140, 10, "pink", "States ave", 13),
-            pink3 = new Property(140, 12, "pink", "Virginia ave", 14),
+            pink2 = new Property(140, 10, "pink", "States Ave", 13),
+            pink3 = new Property(140, 12, "pink", "Virginia Ave", 14),
             orange1 = new Property(180, 14, "orange", "St. James Place", 16),
-            orange2 = new Property(180, 14, "orange", "Tennessee ave", 18),
-            orange3 = new Property(200, 16, "orange", "New York ave", 19),
-            red1 = new Property(220, 18, "red", "Kentucky ave", 21),
-            red2 = new Property(220, 18, "red", "Indiana ave", 23),
-            red3 = new Property(240, 20, "red", "Illinois ave", 24),
-            yellow1 = new Property(260, 22, "yellow", "Atlantic ave", 26),
-            yellow2 = new Property(260, 22, "yellow", "Ventnor ave", 27),
+            orange2 = new Property(180, 14, "orange", "Tennessee Ave", 18),
+            orange3 = new Property(200, 16, "orange", "New York Ave", 19),
+            red1 = new Property(220, 18, "red", "Kentucky Ave", 21),
+            red2 = new Property(220, 18, "red", "Indiana Ave", 23),
+            red3 = new Property(240, 20, "red", "Illinois Ave", 24),
+            yellow1 = new Property(260, 22, "yellow", "Atlantic Ave", 26),
+            yellow2 = new Property(260, 22, "yellow", "Ventnor Ave", 27),
             yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29),
-            green1 = new Property(300, 26, "green", "Pacific ave", 31),
-            green2 = new Property(300, 26, "green", "North Carolina ave", 32),
-            green3 = new Property(320, 28, "green", "Pennsylvania ave", 34),
+            green1 = new Property(300, 26, "green", "Pacific Ave", 31),
+            green2 = new Property(300, 26, "green", "North Carolina Ave", 32),
+            green3 = new Property(320, 28, "green", "Pennsylvania Ave", 34),
             dblue1 = new Property(350, 35, "dark blue", "Park Place", 37),
-            dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39)
+            dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39),
+            electric = new Property(150, 0, "utility", "Electrical Company", 12),
+            waterWorks= new Property(150, 0, "utility", "Water Works", 28)
     };
 
     private int spaceCount=0;
@@ -107,8 +111,20 @@ public class MainFile extends Application {
         diceRoll.setOnAction(e->{
             if(turnCounter==1){
                 player1.move();
+                if(player1.getSpace()==4){
+                    int opt1= 200;
+                    int opt2= player1.getMoney()/10;
+                    if(opt1>=opt2){
+                        player1.addMoney(-1*(200));
+                        player1.incomeTax(200);
+                    }
+                    else{
+                        player1.addMoney(-1*(opt2));
+                        player1.incomeTax(opt2);
+                    }
+                }
                 for(int i=0; i<properties.length; i++){
-                    if(properties[i].getSpacenum()==player1.getSpace()  ){
+                    if(properties[i].getSpacenum()==player1.getSpace()){
                         player1.action(properties[i]);
                         break;
                         //if not property do something else
@@ -117,6 +133,18 @@ public class MainFile extends Application {
             }
             else if(turnCounter==2){
                 player2.move();
+                if(player2.getSpace()==4){
+                    int opt1= 200;
+                    int opt2= player2.getMoney()/10;
+                    if(opt1>=opt2){
+                        player2.addMoney(-1*(200));
+                        player2.incomeTax(200);
+                    }
+                    else{
+                        player2.addMoney(-1*(opt2));
+                        player2.incomeTax(opt2);
+                    }
+                }
                 for(int i=0; i<properties.length; i++){
                     if(properties[i].getSpacenum()==player2.getSpace()  ){
                         player2.action(properties[i]);
@@ -127,6 +155,18 @@ public class MainFile extends Application {
             }
             else if(turnCounter==3){
                 player3.move();
+                if(player3.getSpace()==4){
+                    int opt1= 200;
+                    int opt2= player3.getMoney()/10;
+                    if(opt1>=opt2){
+                        player3.addMoney(-1*(200));
+                        player3.incomeTax(200);
+                    }
+                    else{
+                        player3.addMoney(-1*(opt2));
+                        player3.incomeTax(opt2);
+                    }
+                }
                 for(int i=0; i<properties.length; i++){
                     if(properties[i].getSpacenum()==player3.getSpace()  ){
                         player3.action(properties[i]);
@@ -170,7 +210,10 @@ public class MainFile extends Application {
 
         player1.getMoneyText().setX(690);
         player1.getMoneyText().setY(70);
+        player1.getPropText().setX(670);
+        player1.getPropText().setY(90);
         mainPane.getChildren().add(player1.getMoneyText());
+        mainPane.getChildren().add(player1.getPropText());
 
         Text p2 = new Text("Player 2: ");
         p2.setScaleX(2);
@@ -181,7 +224,10 @@ public class MainFile extends Application {
 
         player2.getMoneyText().setX(690);
         player2.getMoneyText().setY(650/3 + 70);
+        player2.getPropText().setX(670);
+        player2.getPropText().setY(650/3 +90);
         mainPane.getChildren().add(player2.getMoneyText());
+        mainPane.getChildren().add(player2.getPropText());
 
         Text p3 = new Text("Player 3: ");
         p3.setScaleX(2);
@@ -192,7 +238,10 @@ public class MainFile extends Application {
 
         player3.getMoneyText().setX(690);
         player3.getMoneyText().setY(650/3 * 2 + 70);
+        player3.getPropText().setX(670);
+        player3.getPropText().setY(650/3*2+90);
         mainPane.getChildren().add(player3.getMoneyText());
+        mainPane.getChildren().add(player3.getPropText());
 
 
         Scene scene = new Scene(mainPane, 850,650);

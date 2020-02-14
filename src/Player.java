@@ -70,6 +70,14 @@ public class Player {
             if(space+1==40){
                 space=0;
                 addMoney(200);
+                Stage stage2 = new Stage();
+                stage.setTitle("Go");
+                Text t2 = new Text(10, 50, "Player " + playerNum + " gained $200 from passing go");
+                Pane p2 = new Pane();
+                p2.getChildren().add(t);
+                Scene ss2 = new Scene(p, 250, 150);
+                stage2.setScene(ss2);
+                stage2.show();
             }
             else {
                 space++;
@@ -119,7 +127,7 @@ public class Player {
         if(!(property.isPurchased())){
             Stage stage = new Stage();
             stage.setTitle("Want to buy " + property.getName() + "?");
-            Text t = new Text(150, 250, "Want to buy " + property.getName() + "?");
+            Text t = new Text(150, 250, "Want to buy " + property.getName() + " for $" + property.getPrice()+"?" );
             Pane p = new Pane();
             Button yes = new Button();
             yes.setText("Yes!");
@@ -132,7 +140,12 @@ public class Player {
                 property.setPurchased(true);
                 property.setOwner(this);
                 propertiesOwned.add(property);
-
+                String str= "Properties: ";
+                for(int i=0; i<propertiesOwned.size(); i++){
+                    str += propertiesOwned.get(i).getName() + ", ";
+                }
+                propText.setText(str);
+                propText.setWrappingWidth(860-670-10);
                 stage.close();
                 return;
             });
@@ -155,6 +168,35 @@ public class Player {
             stage.setScene(ss);
             stage.show();
         }
+        else if(property.getSpacenum()==12 || property.getSpacenum()==28){
+            Player owner = property.getOwner();
+            Stage stage = new Stage();
+            Button roll= new Button();
+            roll.setText("Roll");
+            roll.setLayoutX(50);
+            roll.setLayoutY(50);
+            roll.setOnAction(e->{
+                int num = (int)(Math.random()*12)+1;
+                this.addMoney(num*4*-1);
+                owner.addMoney(property.getTax());
+                stage.setTitle("Gain/Lose money");
+                Text t3 = new Text(10, 50, "Player " + playerNum + " rolled a " + num);
+                Text t = new Text(10, 100, "Player " + playerNum + " lost $" + num*4);
+                Text t2 = new Text(10, 150, "Player " + owner.playerNum + " gained $" + num*4);
+                Pane p = new Pane();
+                p.getChildren().add(t);
+                p.getChildren().add(t2);
+                p.getChildren().add(t3);
+                Scene ss = new Scene(p, 100, 250);
+                stage.setScene(ss);
+                stage.show();
+            });
+            Pane p = new Pane();
+            p.getChildren().add(roll);
+            Scene ss = new Scene(p, 100, 100);
+            stage.setScene(ss);
+            stage.show();
+        }
         else{
             Player owner = property.getOwner();
             Stage stage = new Stage();
@@ -170,6 +212,17 @@ public class Player {
             stage.setScene(ss);
             stage.show();
         }
+    }
+
+    public void incomeTax(int val){
+        Stage stage = new Stage();
+        stage.setTitle("Income Tax");
+        Text t = new Text(10, 50, "Player " + playerNum + " lost $" + val);
+        Pane p = new Pane();
+        p.getChildren().add(t);
+        Scene ss = new Scene(p, 250, 150);
+        stage.setScene(ss);
+        stage.show();
     }
 
 
@@ -227,5 +280,13 @@ public class Player {
 
     public void setMoneyText(Text moneyText) {
         this.moneyText = moneyText;
+    }
+
+    public Text getPropText() {
+        return propText;
+    }
+
+    public void setPropText(Text propText) {
+        this.propText = propText;
     }
 }

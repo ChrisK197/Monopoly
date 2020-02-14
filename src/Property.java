@@ -19,7 +19,7 @@ public class Property {
         propToNumOfColor.put("green", 3);
         propToNumOfColor.put("dblue", 2);
         propToNumOfColor.put("railroad", 4);
-        propToNumOfColor.put("utility", 2);
+        propToNumOfColor.put("Utility", 2);
 
     }
 
