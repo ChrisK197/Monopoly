@@ -14,6 +14,14 @@ public class Player {
     private int startX;
     private int startY;
     private int playerNum;
+    private boolean allPurpleProps = false;
+    private boolean allLBlueProps = false;
+    private boolean allPinkProps = false;
+    private boolean allOrangeProps = false;
+    private boolean allRedProps = false;
+    private boolean allYellowProps = false;
+    private boolean allGreenProps = false;
+    private boolean allDBlueProps = false;
 
     public Player(Image image, int x, int y, int pnum){
         icon = new ImageView(image);
@@ -81,8 +89,6 @@ public class Player {
         money += amount;
         return money;
     }
-
-
 
 
     public int getSpace() {
