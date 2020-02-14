@@ -10,8 +10,7 @@ public class ChanceCard {
     public static int total = cards.length;
 
     public ChanceCard () {
-        //cardPhrase = cards[(int)(Math.random()*total)];
-        cardPhrase = "Go back three spaces";
+        cardPhrase = cards[(int)(Math.random()*total)];
     }
 
     //arr[0] --> 0 = move; 1 = money
