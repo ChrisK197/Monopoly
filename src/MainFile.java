@@ -278,6 +278,16 @@ public class MainFile extends Application {
                                 }
                             }
                         }
+                        else if (player1.getSpace() == 2 || player1.getSpace() == 17 || player1.getSpace() == 33) {
+                            Stage stage = new Stage();
+                            stage.setTitle("New Community Chest Card");
+                            Text t = new Text(50, 50, "Community Chest cards coming soon!");
+                            Pane p = new Pane();
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 400, 200);
+                            stage.setScene(ss);
+                            stage.show();
+                        }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player1.getSpace()) {
                                 player1.action(properties[i]);
@@ -450,6 +460,16 @@ public class MainFile extends Application {
                                     player2.addMoney(c[1]);
                                 }
                             }
+                        }
+                        else if (player2.getSpace() == 2 || player2.getSpace() == 17 || player2.getSpace() == 33) {
+                            Stage stage = new Stage();
+                            stage.setTitle("New Community Chest Card");
+                            Text t = new Text(50, 50, "Community Chest cards coming soon!");
+                            Pane p = new Pane();
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 400, 200);
+                            stage.setScene(ss);
+                            stage.show();
                         }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player2.getSpace()) {
@@ -624,6 +644,16 @@ public class MainFile extends Application {
                                     player3.addMoney(c[1]);
                                 }
                             }
+                        }
+                        else if (player3.getSpace() == 2 || player3.getSpace() == 17 || player3.getSpace() == 33) {
+                            Stage stage = new Stage();
+                            stage.setTitle("New Community Chest Card");
+                            Text t = new Text(50, 50, "Community Chest cards coming soon!");
+                            Pane p = new Pane();
+                            p.getChildren().add(t);
+                            Scene ss = new Scene(p, 400, 200);
+                            stage.setScene(ss);
+                            stage.show();
                         }
                         for (int i = 0; i < properties.length; i++) {
                             if (properties[i].getSpacenum() == player3.getSpace()) {

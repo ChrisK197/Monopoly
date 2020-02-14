@@ -66,13 +66,4 @@ public class ChanceCard {
         return cardPhrase;
     }
 
-    public int getCardNum() {
-        for (int i=0; i < total; i++) {
-            if (cards[i].equals(cardPhrase)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
 }
