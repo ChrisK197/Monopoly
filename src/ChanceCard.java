@@ -38,6 +38,7 @@ public class ChanceCard {
             }
         }
         else {
+            arr[0] = 1;
             if (cardPhrase.equals(cards[3])) {
                 arr[1] = 0;
             }
