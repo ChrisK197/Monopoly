@@ -17,7 +17,7 @@ public class Player {
     private int space = 0;
     private Image ic;
     private ImageView icon;
-    private int money = 1500;
+    private int money = 100;
     private int startX;
     private int startY;
     private int playerNum;
@@ -122,6 +122,8 @@ public class Player {
         money += amount;
         if(money <= 0){
             dead = true;
+            emptyProps();
+            propText.setText("Properties: Bankrupt!!");
             moneyText.setText("Bankrupt!!");
             return 0;
         }
@@ -144,15 +146,16 @@ public class Player {
 
                 mediaPlayer2.setVolume(100);
                 mediaPlayer2.play();
-
-                property.setPurchased(true);
-                property.setOwner(this);
-                propertiesOwned.add(property);
-                String str= "Properties: ";
-                for(int i=0; i<propertiesOwned.size(); i++){
-                    str += propertiesOwned.get(i).getName() + ", ";
+                if(!dead) {
+                    property.setPurchased(true);
+                    property.setOwner(this);
+                    propertiesOwned.add(property);
+                    String str = "Properties: ";
+                    for (int i = 0; i < propertiesOwned.size(); i++) {
+                        str += propertiesOwned.get(i).getName() + ", ";
+                    }
+                    propText.setText(str);
                 }
-                propText.setText(str);
                 propText.setWrappingWidth(860-670-10);
                 stage.close();
                 return;
@@ -231,6 +234,14 @@ public class Player {
         Scene ss = new Scene(p, 250, 150);
         stage.setScene(ss);
         stage.show();
+    }
+
+    public void emptyProps(){
+        for(int i = 0; i < propertiesOwned.size(); i++){
+            propertiesOwned.get(i).setPurchased(false);
+            propertiesOwned.get(i).setOwner(null);
+        }
+        propertiesOwned.clear();
     }
 
 
