@@ -53,6 +53,15 @@ public class MainFile extends Application {
             else if(turnCounter==2){
                 player2.move();
             }
+            else if(turnCounter==3){
+                player3.move();
+            }
+            if(turnCounter==3){
+                turnCounter=1;
+            }
+            else{
+                turnCounter++;
+            }
         });
         mainPane.getChildren().add(diceRoll);
         diceRoll.setLayoutX(300);
