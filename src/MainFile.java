@@ -14,7 +14,7 @@ public class MainFile extends Application {
         Pane mainPane= new Pane();
 
         Image player1image = new Image("respass.png");
-        Player player1 = new Player(player1image);
+        Player player1 = new Player(player1image, 610, 610);
         ImageView player1ImageView = player1.getImageView();
         player1ImageView.setImage(player1image);
         player1ImageView.setFitWidth(40);
@@ -24,7 +24,7 @@ public class MainFile extends Application {
         mainPane.getChildren().add(player1ImageView);
 
         Image player2image = new Image("isecke.png");
-        Player player2 = new Player(player2image);
+        Player player2 = new Player(player2image, 610, 570);
         ImageView player2ImageView = player2.getImageView();
         player2ImageView.setImage(player2image);
         player2ImageView.setFitWidth(40);
@@ -34,7 +34,7 @@ public class MainFile extends Application {
         mainPane.getChildren().add(player2ImageView);
 
         Image player3image = new Image("bcayy.png");
-        Player player3 = new Player(player3image);
+        Player player3 = new Player(player3image, 610, 570);
         ImageView player3ImageView = player3.getImageView();
         player3ImageView.setImage(player3image);
         player3ImageView.setFitWidth(40);
