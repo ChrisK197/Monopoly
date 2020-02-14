@@ -454,17 +454,17 @@ public class MainFile extends Application {
                                     player2.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player2.getImageView();
-                                    if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
+                                    if(space==5){
+                                        icon.setX(325);
+                                        icon.setY(610);
                                     }
                                     else if(space==11){
                                         icon.setY(520);
+                                        icon.setX(50);
                                     }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
+                                    else if (space==24){
+                                        icon.setY(60);
+                                        icon.setX(275);
                                     }
                                 }
                             }
@@ -644,17 +644,17 @@ public class MainFile extends Application {
                                     player3.setSpace(c[1]);
                                     int space = c[1];
                                     ImageView icon = player3.getImageView();
-                                    if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
+                                    if(space==5){
+                                        icon.setX(325);
+                                        icon.setY(610);
                                     }
                                     else if(space==11){
                                         icon.setY(520);
+                                        icon.setX(50);
                                     }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
+                                    else if (space==24){
+                                        icon.setY(60);
+                                        icon.setX(275);
                                     }
                                 }
                             }
