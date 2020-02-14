@@ -85,7 +85,6 @@ public class Player {
 
         roll += roll2;
 
-        roll = 7;
 
         mediaPlayer.setVolume(100);
         mediaPlayer.play();

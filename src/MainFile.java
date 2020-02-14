@@ -121,6 +121,8 @@ public class MainFile extends Application {
                         player1.setSpace(10);
                         if (player1.jailBreakCard > 0) {
                             player1.jailBreakCard--;
+                            player1.getImageView().setX(40);
+                            player1.getImageView().setY(620);
                         }
                         else {
                             Stage stage = new Stage();
@@ -217,43 +219,19 @@ public class MainFile extends Application {
                                     player1.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
-                                    int space = player1.getSpace();
+                                    int space = player1.getSpace()-3;
                                     ImageView icon = player1.getImageView();
-                                    space-=3;
-                                    if(space==0){
-                                        //change later to make better
-                                        icon.setX(player1.getStartX());
-                                        icon.setY(player1.getStartY());
+                                    if(space==4){
+                                        icon.setX(353);
+                                        icon.setY(610);
                                     }
-                                    else if(space==1){
-                                        icon.setX(520);
+                                    else if(space==19){
+                                        icon.setX(45);
+                                        icon.setY(90);
                                     }
-                                    else if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
-                                    }
-                                    else if(space==11){
-                                        icon.setY(520);
-                                    }
-                                    else if(12<=space && space<=20){
-                                        icon.setY(icon.getY()-53);
-                                    }
-                                    else if(21==space){
-                                        icon.setX(icon.getX()+55);
-                                    }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
-                                    }
-                                    else if(31== space){
-                                        icon.setY(icon.getY()+47);
-                                    }
-                                    else if(32<=space && space<=40){
-                                        icon.setY(icon.getY()+53);
-                                    }
-                                    else{
-                                        System.out.println("Didn't detect where the space is.");
+                                    else if(space==33){
+                                        icon.setX(625);
+                                        icon.setY(200);
                                     }
                                 }
                                 else if (c[1] == -1) {
@@ -270,7 +248,7 @@ public class MainFile extends Application {
                                     int space = c[1];
                                     ImageView icon = player1.getImageView();
                                     if(space==5){
-                                        icon.setX(340);
+                                        icon.setX(315);
                                         icon.setY(590);
                                     }
                                     else if(space==11){
@@ -314,6 +292,8 @@ public class MainFile extends Application {
                     if(daysInJail2<=2){
                         if (player2.jailBreakCard > 0) {
                             player2.jailBreakCard--;
+                            player2.getImageView().setX(40);
+                            player2.getImageView().setY(620);
                         }
                         else {
                             Stage stage = new Stage();
@@ -412,43 +392,19 @@ public class MainFile extends Application {
                                     player2.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
-                                    int space = player2.getSpace();
+                                    int space = player2.getSpace()-3;
                                     ImageView icon = player2.getImageView();
-                                    space-=3;
-                                    if(space==0){
-                                        //change later to make better
-                                        icon.setX(player2.getStartX());
-                                        icon.setY(player2.getStartY());
+                                    if(space==4){
+                                        icon.setX(353);
+                                        icon.setY(610);
                                     }
-                                    else if(space==1){
-                                        icon.setX(520);
+                                    else if(space==19){
+                                        icon.setX(45);
+                                        icon.setY(90);
                                     }
-                                    else if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
-                                    }
-                                    else if(space==11){
-                                        icon.setY(520);
-                                    }
-                                    else if(12<=space && space<=20){
-                                        icon.setY(icon.getY()-53);
-                                    }
-                                    else if(21==space){
-                                        icon.setX(icon.getX()+55);
-                                    }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
-                                    }
-                                    else if(31== space){
-                                        icon.setY(icon.getY()+47);
-                                    }
-                                    else if(32<=space && space<=40){
-                                        icon.setY(icon.getY()+53);
-                                    }
-                                    else{
-                                        System.out.println("Didn't detect where the space is.");
+                                    else if(space==33){
+                                        icon.setX(625);
+                                        icon.setY(200);
                                     }
                                 }
                                 else if (c[1] == -1) {
@@ -465,7 +421,7 @@ public class MainFile extends Application {
                                     int space = c[1];
                                     ImageView icon = player2.getImageView();
                                     if(space==5){
-                                        icon.setX(325);
+                                        icon.setX(315);
                                         icon.setY(610);
                                     }
                                     else if(space==11){
@@ -508,6 +464,8 @@ public class MainFile extends Application {
                     if (daysInJail3 <= 2) {
                         if (player3.jailBreakCard > 0) {
                             player3.jailBreakCard--;
+                            player3.getImageView().setX(40);
+                            player3.getImageView().setY(620);
                         }
                         else {
                             Stage stage = new Stage();
@@ -608,43 +566,19 @@ public class MainFile extends Application {
                                     player3.addMoney(200);
                                 }
                                 else if (c[1] == -3) {
-                                    int space = player3.getSpace();
+                                    int space = player3.getSpace()-3;
                                     ImageView icon = player3.getImageView();
-                                    space-=3;
-                                    if(space==0){
-                                        //change later to make better
-                                        icon.setX(player3.getStartX());
-                                        icon.setY(player3.getStartY());
+                                    if(space==4){
+                                        icon.setX(353);
+                                        icon.setY(610);
                                     }
-                                    else if(space==1){
-                                        icon.setX(520);
+                                    else if(space==19){
+                                        icon.setX(45);
+                                        icon.setY(90);
                                     }
-                                    else if(2<=space && space<=10){
-                                        if(space==10){
-                                            icon.setY(625);
-                                        }
-                                        icon.setX(icon.getX()-53);
-                                    }
-                                    else if(space==11){
-                                        icon.setY(520);
-                                    }
-                                    else if(12<=space && space<=20){
-                                        icon.setY(icon.getY()-53);
-                                    }
-                                    else if(21==space){
-                                        icon.setX(icon.getX()+55);
-                                    }
-                                    else if(22<=space && space<=30){
-                                        icon.setX(icon.getX()+53);
-                                    }
-                                    else if(31== space){
-                                        icon.setY(icon.getY()+47);
-                                    }
-                                    else if(32<=space && space<=40){
-                                        icon.setY(icon.getY()+53);
-                                    }
-                                    else{
-                                        System.out.println("Didn't detect where the space is.");
+                                    else if(space==33){
+                                        icon.setX(625);
+                                        icon.setY(200);
                                     }
                                 }
                                 else if (c[1] == -1) {
@@ -661,7 +595,7 @@ public class MainFile extends Application {
                                     int space = c[1];
                                     ImageView icon = player3.getImageView();
                                     if(space==5){
-                                        icon.setX(325);
+                                        icon.setX(315);
                                         icon.setY(610);
                                     }
                                     else if(space==11){
