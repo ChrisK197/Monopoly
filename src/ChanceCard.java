@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class ChanceCard {
     private static String[] cards = {"Advance to Go", "Advance to Illinois Avenue. If you pass Go, collect $200", "Advance St. Charles Place", "If you pass Go, collect $200", "Get out of jail free", "Go back three spaces", "Go to jail. Go directly to jail.", "Pay $25 for each property", "Pay poor tax of $15", "Go to the Reading Railroad. If you pass Go, collect $200",
             "You have been elected Chairman of the Board. Pay each player $50",
