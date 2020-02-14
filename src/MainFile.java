@@ -34,12 +34,12 @@ public class MainFile extends Application {
         mainPane.getChildren().add(player2ImageView);
 
         Image player3image = new Image("bcayy.png");
-        Player player3 = new Player(player3image, 610, 570, 3);
+        Player player3 = new Player(player3image, 550, 570, 3);
         ImageView player3ImageView = player3.getImageView();
         player3ImageView.setImage(player3image);
         player3ImageView.setFitWidth(40);
         player3ImageView.setFitHeight(40);
-        player3ImageView.setX(610);
+        player3ImageView.setX(565);
         player3ImageView.setY(570);
         mainPane.getChildren().add(player3ImageView);
 
