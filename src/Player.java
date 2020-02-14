@@ -1,4 +1,5 @@
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -88,6 +89,42 @@ public class Player {
     public int addMoney(int amount){
         money += amount;
         return money;
+    }
+
+    public void action(Property property){
+        if(!(property.isPurchased())){
+            Stage stage = new Stage();
+            stage.setTitle("Want to buy " + property.getName() + "?");
+            Text t = new Text(150, 250, "Want to buy " + property.getName() + "?");
+            Pane p = new Pane();
+            Button yes = new Button();
+            yes.setText("Yes!");
+            yes.setOnAction(e->{
+                this.addMoney(property.getPrice()*-1);
+                property.setPurchased(true);
+                property.setOwner(playerNum);
+                stage.close();
+                return;
+            });
+            Button no = new Button();
+            no.setText("NO");
+            no.setOnAction(e->{
+                stage.close();
+                return;
+            });
+            yes.setLayoutX(50);
+            yes.setLayoutY(100);
+            no.setLayoutX(100);
+            no.setLayoutY(100);
+            t.setX(10);
+            t.setY(25);
+            p.getChildren().add(yes);
+            p.getChildren().add(no);
+            p.getChildren().add(t);
+            Scene ss = new Scene(p, 200, 200);
+            stage.setScene(ss);
+            stage.show();
+        }
     }
 
 

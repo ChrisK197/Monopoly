@@ -7,6 +7,7 @@ public class Property {
     private boolean isPurchased = false;
     private String name;
     private int spacenum;
+    private int owner=0;
     public static HashMap<String, Integer> propToNumOfColor = new HashMap<>();
     static {
         propToNumOfColor.put("purple", 2);
@@ -31,5 +32,67 @@ public class Property {
         spacenum = space;
     }
 
+    public int getPrice() {
+        return price;
+    }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getTax() {
+        return tax;
+    }
+
+    public void setTax(int tax) {
+        this.tax = tax;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public boolean isPurchased() {
+        return isPurchased;
+    }
+
+    public void setPurchased(boolean purchased) {
+        isPurchased = purchased;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSpacenum() {
+        return spacenum;
+    }
+
+    public void setSpacenum(int spacenum) {
+        this.spacenum = spacenum;
+    }
+
+    public static HashMap<String, Integer> getPropToNumOfColor() {
+        return propToNumOfColor;
+    }
+
+    public static void setPropToNumOfColor(HashMap<String, Integer> propToNumOfColor) {
+        Property.propToNumOfColor = propToNumOfColor;
+    }
+
+    public int getOwner() {
+        return owner;
+    }
+
+    public void setOwner(int owner) {
+        this.owner = owner;
+    }
 }
