@@ -1,5 +1,10 @@
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Player {
     private int space = 0;
@@ -8,16 +13,27 @@ public class Player {
     private int money = 1500;
     private int startX;
     private int startY;
+    private int playerNum;
 
-    public Player(Image image, int x, int y){
+    public Player(Image image, int x, int y, int pnum){
         icon = new ImageView(image);
         startX = x;
         startY = y;
+        playerNum = pnum;
     }
     //total of 40 squares. Go is 0. Last is 39
     protected void move(){
         //change to math.random() later.
         int roll = (int)(Math.random()*6)+1;
+        Stage stage = new Stage();
+        stage.setTitle("Roll");
+        Pane p = new Pane();
+        Text t = new Text(150, 250, "Player " + playerNum + " rolled " + roll);
+        t.setFont(new Font(26));
+        p.getChildren().add(t);
+        Scene ss = new Scene(p, 500, 500);
+        stage.setScene(ss);
+        stage.show();
         for(int i=1; i<=roll; i++){
             if(space+1==40){
                 space=0;
