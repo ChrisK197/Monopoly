@@ -17,7 +17,7 @@ public class Player {
     private int space = 0;
     private Image ic;
     private ImageView icon;
-    private int money = 100;
+    private int money = 1500;
     private int startX;
     private int startY;
     private int playerNum;
