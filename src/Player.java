@@ -36,7 +36,7 @@ public class Player {
         Stage stage = new Stage();
         stage.setTitle("Roll");
         Pane p = new Pane();
-        Text t = new Text(150, 250, "Player " + playerNum + " rolled " + roll);
+        Text t = new Text(150, 250, "Player " + playerNum + " rolled a " + roll);
         t.setFont(new Font(26));
         p.getChildren().add(t);
         Scene ss = new Scene(p, 500, 500);
