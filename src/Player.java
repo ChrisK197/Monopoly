@@ -42,6 +42,10 @@ public class Player {
     private Media sound2 = new Media(new File(musicFile2).toURI().toString());
     private MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
 
+    private String musicFile3 = "sadTrombone.mp3";
+    private Media sound3 = new Media(new File(musicFile3).toURI().toString());
+    private MediaPlayer mediaPlayer3 = new MediaPlayer(sound3);
+
     public Player(Image image, int x, int y, int pnum){
         icon = new ImageView(image);
         startX = x;
@@ -123,6 +127,8 @@ public class Player {
         if(money <= 0){
             dead = true;
             emptyProps();
+            mediaPlayer3.setVolume(100);
+            mediaPlayer3.play();
             propText.setText("Properties: Bankrupt!!");
             moneyText.setText("Bankrupt!!");
             return 0;
