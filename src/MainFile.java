@@ -201,7 +201,7 @@ public class MainFile extends Application {
                             Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
                             Pane p = new Pane();
                             p.getChildren().add(t);
-                            Scene ss = new Scene(p, 250, 200);
+                            Scene ss = new Scene(p, 400, 200);
                             stage.setScene(ss);
                             stage.show();
                             int[] c = chance.cardType();
@@ -390,7 +390,7 @@ public class MainFile extends Application {
                             Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
                             Pane p = new Pane();
                             p.getChildren().add(t);
-                            Scene ss = new Scene(p, 250, 200);
+                            Scene ss = new Scene(p, 400, 200);
                             stage.setScene(ss);
                             stage.show();
                             int[] c = chance.cardType();
@@ -580,7 +580,7 @@ public class MainFile extends Application {
                             Text t = new Text(50, 50, "New Chance Card! \n\n" + chance.getCardPhrase());
                             Pane p = new Pane();
                             p.getChildren().add(t);
-                            Scene ss = new Scene(p, 250, 200);
+                            Scene ss = new Scene(p, 400, 200);
                             stage.setScene(ss);
                             stage.show();
                             int[] c = chance.cardType();
