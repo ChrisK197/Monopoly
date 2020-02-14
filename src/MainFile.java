@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -166,6 +167,13 @@ public class MainFile extends Application {
         p1.setX(680);
         p1.setY(30);
         mainPane.getChildren().add(p1);
+        Text p1Money = new Text();
+        p1Money.setText(String.format("Money: $%d",player1.getMoney()));
+        p1Money.setScaleX(2);
+        p1Money.setScaleY(2);
+        p1Money.setX(690);
+        p1Money.setY(70);
+        mainPane.getChildren().add(p1Money);
 
         Text p2 = new Text("Player 2: ");
         p2.setScaleX(2);
@@ -174,12 +182,30 @@ public class MainFile extends Application {
         p2.setY(650/3 + 30);
         mainPane.getChildren().add(p2);
 
+        Text p2Money = new Text();
+        p2Money.setText(String.format("Money: $%d",player2.getMoney()));
+        p2Money.setScaleX(2);
+        p2Money.setScaleY(2);
+        p2Money.setX(690);
+        p2Money.setY(650/3 + 70);
+        mainPane.getChildren().add(p2Money);
+
         Text p3 = new Text("Player 3: ");
         p3.setScaleX(2);
         p3.setScaleY(2);
         p3.setX(680);
         p3.setY(650/3 * 2 + 30);
         mainPane.getChildren().add(p3);
+
+        Text p3Money = new Text();
+        p3Money.setText(String.format("Money: $%d",player3.getMoney()));
+        p3Money.setScaleX(2);
+        p3Money.setScaleY(2);
+        p3Money.setX(690);
+        p3Money.setY(650/3 * 2 + 70);
+        mainPane.getChildren().add(p3Money);
+
+
         Scene scene = new Scene(mainPane, 850,650);
         ps.setTitle("Monopoly");
         mainPane.requestFocus();
