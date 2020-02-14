@@ -3,13 +3,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Player {
@@ -30,14 +27,6 @@ public class Player {
     private boolean allGreenProps = false;
     private boolean allDBlueProps = false;
 
-    private String musicFile = "diceRoll.mp3";
-    private Media sound = new Media(new File(musicFile).toURI().toString());
-    private MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
-    private String musicFile2 = "chaChing.mp3";
-    private Media sound2 = new Media(new File(musicFile2).toURI().toString());
-    private MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
-
     public Player(Image image, int x, int y, int pnum){
         icon = new ImageView(image);
         startX = x;
@@ -57,9 +46,6 @@ public class Player {
         Scene ss = new Scene(p, 500, 500);
         stage.setScene(ss);
         stage.show();
-        mediaPlayer.setVolume(100);
-        mediaPlayer.play();
-
         for(int i=1; i<=roll; i++){
             if(space+1==40){
                 space=0;
@@ -118,11 +104,8 @@ public class Player {
             yes.setText("Yes!");
             yes.setOnAction(e->{
                 this.addMoney(property.getPrice()*-1);
-                mediaPlayer2.setVolume(100);
-                mediaPlayer2.play();
-
                 property.setPurchased(true);
-                property.setOwner(playerNum);
+                property.setOwner(this);
                 propertiesOwned.add(property);
                 stage.close();
                 return;

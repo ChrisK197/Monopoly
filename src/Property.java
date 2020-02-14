@@ -7,7 +7,7 @@ public class Property {
     private boolean isPurchased = false;
     private String name;
     private int spacenum;
-    private int owner=0;
+    private Player owner;
     public static HashMap<String, Integer> propToNumOfColor = new HashMap<>();
     static {
         propToNumOfColor.put("purple", 2);
@@ -88,11 +88,11 @@ public class Property {
         Property.propToNumOfColor = propToNumOfColor;
     }
 
-    public int getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(Player owner) {
         this.owner = owner;
     }
 }
