@@ -7,6 +7,33 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainFile extends Application {
+    public Property purple1;
+    public Property purple2;
+    public Property railroad1;
+    public Property railroad2;
+    public Property railroad3;
+    public Property railroad4;
+    public Property lblue1;
+    public Property lblue2;
+    public Property lblue3;
+    public Property pink1;
+    public Property pink2;
+    public Property pink3;
+    public Property orange1;
+    public Property orange2;
+    public Property orange3;
+    public Property red1;
+    public Property red2;
+    public Property red3;
+    public Property yellow1;
+    public Property yellow2;
+    public Property yellow3;
+    public Property green1;
+    public Property green2;
+    public Property green3;
+    public Property dblue1;
+    public Property dblue2;
+
     private int spaceCount=0;
     //player1 is 1, 2 is 2 etc.
     private int turnCounter=1;
@@ -56,6 +83,7 @@ public class MainFile extends Application {
             else if(turnCounter==3){
                 player3.move();
             }
+
             if(turnCounter==3){
                 turnCounter=1;
             }
@@ -87,32 +115,34 @@ public class MainFile extends Application {
         ps.show();
     }
 
+
+
     private void creatingProperties(){
-        Property purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1);
-        Property purple2 = new Property(60, 4, "purple", "Baltic Ave", 3);
-        Property railroad1 = new Property(200, 25, "railroad", "Reading railroad", 5);
-        Property railroad2 = new Property(200, 25, "railroad", "Pennsylvania railroad", 15);
-        Property railroad3 = new Property(200, 25, "railroad", "B. and O. railroad", 25);
-        Property railroad4 = new Property(200, 25, "railroad", "Short Line railroad", 35);
-        Property lblue1 = new Property(100, 6, "light blue", "Oriental ave", 6);
-        Property lblue2 = new Property(100, 6, "light blue", "Vermont ave", 8);
-        Property lblue3 = new Property(120, 8, "light blue", "Connecticut ave", 9);
-        Property pink1 = new Property(140, 10, "pink", "St. Charles Place", 11);
-        Property pink2 = new Property(140, 10, "pink", "States ave", 13);
-        Property pink3 = new Property(140, 12, "pink", "Virginia ave", 14);
-        Property orange1 = new Property(180, 14, "orange", "St. James Place", 16);
-        Property orange2 = new Property(180, 14, "orange", "Tennessee ave", 18);
-        Property orange3 = new Property(200, 16, "orange", "New York ave", 19);
-        Property red1 = new Property(220, 18, "red", "Kentucky ave", 21);
-        Property red2 = new Property(220, 18, "red", "Indiana ave", 23);
-        Property red3 = new Property(240, 20, "red", "Illinois ave", 24);
-        Property yellow1 = new Property(260, 22, "yellow", "Atlantic ave", 26);
-        Property yellow2 = new Property(260, 22, "yellow", "Ventnor ave", 27);
-        Property yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29);
-        Property green1 = new Property(300, 26, "green", "Pacific ave", 31);
-        Property green2 = new Property(300, 26, "green", "North Carolina ave", 32);
-        Property green3 = new Property(320, 28, "green", "Pennsylvania ave", 34);
-        Property dblue1 = new Property(350, 35, "dark blue", "Park Place", 37);
-        Property dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39);
+        purple1 = new Property(60, 2, "purple", "Mediterranean Ave", 1);
+        purple2 = new Property(60, 4, "purple", "Baltic Ave", 3);
+        railroad1 = new Property(200, 25, "railroad", "Reading railroad", 5);
+        railroad2 = new Property(200, 25, "railroad", "Pennsylvania railroad", 15);
+        railroad3 = new Property(200, 25, "railroad", "B. and O. railroad", 25);
+        railroad4 = new Property(200, 25, "railroad", "Short Line railroad", 35);
+        lblue1 = new Property(100, 6, "light blue", "Oriental ave", 6);
+        lblue2 = new Property(100, 6, "light blue", "Vermont ave", 8);
+        lblue3 = new Property(120, 8, "light blue", "Connecticut ave", 9);
+        pink1 = new Property(140, 10, "pink", "St. Charles Place", 11);
+        pink2 = new Property(140, 10, "pink", "States ave", 13);
+        pink3 = new Property(140, 12, "pink", "Virginia ave", 14);
+        orange1 = new Property(180, 14, "orange", "St. James Place", 16);
+        orange2 = new Property(180, 14, "orange", "Tennessee ave", 18);
+        orange3 = new Property(200, 16, "orange", "New York ave", 19);
+        red1 = new Property(220, 18, "red", "Kentucky ave", 21);
+        red2 = new Property(220, 18, "red", "Indiana ave", 23);
+        red3 = new Property(240, 20, "red", "Illinois ave", 24);
+        yellow1 = new Property(260, 22, "yellow", "Atlantic ave", 26);
+        yellow2 = new Property(260, 22, "yellow", "Ventnor ave", 27);
+        yellow3 = new Property(280, 24, "yellow", "Marvin Gardens", 29);
+        green1 = new Property(300, 26, "green", "Pacific ave", 31);
+        green2 = new Property(300, 26, "green", "North Carolina ave", 32);
+        green3 = new Property(320, 28, "green", "Pennsylvania ave", 34);
+        dblue1 = new Property(350, 35, "dark blue", "Park Place", 37);
+        dblue2 = new Property(400, 50, "dark blue", "Boardwalk", 39);
     }
 }
