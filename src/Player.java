@@ -17,6 +17,7 @@ public class Player {
         for(int i=1; i<=roll; i++){
             if(space+1==40){
                 space=0;
+                addMoney(200);
             }
             else {
                 space++;
